@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<title>Deep Work for Open-Ended Projects</title>
+<style>
+:root{--ink:#222;--head:#1c3557;--muted:#666;--rule:#cfcfcf;--shade:#f1f3f6;--hi:#b5542a;--page:#ffffff;--bg:#ececec;color-scheme:light}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.6;padding-inline:16px}
+.page{max-width:50rem;margin:2rem auto;background:var(--page);border:1px solid #d6d6d6;padding:3.5rem 4rem}
+@media (max-width:640px){.page{padding:1.6rem 1.1rem;margin:1rem auto}}
+h1,h2,h3,h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--head);line-height:1.25}
+h1{font-size:2rem;margin:0 0 .3rem}
+.subtitle{font-size:1.1rem;color:var(--muted);margin:0 0 2rem;padding-bottom:1rem;border-bottom:2px solid var(--head)}
+.draft{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.85rem;color:var(--muted);margin:0 0 2rem;padding-bottom:1rem;border-bottom:2px solid var(--head)}
+h2{font-size:1.45rem;margin:2.6rem 0 .6rem;padding-bottom:.25rem;border-bottom:1px solid var(--rule)}
+h3{font-size:1.12rem;margin:1.8rem 0 .4rem}
+h4{font-size:1rem;margin:1.4rem 0 .3rem}
+p{margin:.7rem 0}
+ol,ul{margin:.5rem 0;padding-left:1.6rem}
+li{margin:.45rem 0}
+blockquote{margin:.8rem 0 .8rem 1.5rem;padding-left:1rem;border-left:3px solid var(--rule);font-style:italic}
+.rule{margin:.6rem 0 1rem;font-style:italic}
+.note{margin:.4rem 0}
+a{color:var(--head)}
+sup.c{font-size:.7em;line-height:0;white-space:nowrap}
+sup.c a{text-decoration:none}
+.toc{margin:.6rem 0}
+.toc>li{margin:.6rem 0}
+.toc ol{list-style:lower-alpha}
+.tw{overflow-x:auto;margin:1rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.35}
+th,td{border:1px solid var(--rule);padding:.4rem .5rem;text-align:left;vertical-align:top}
+thead th{background:var(--shade);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.85rem}
+td.deep{background:#f6e3da;font-weight:bold}
+td.buf{background:#e3eee6}
+.cap,figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.82rem;color:var(--muted);margin-top:.4rem}
+figure{margin:1.4rem 0;text-align:center}
+figure svg{width:100%;height:auto;display:block;margin:0 auto}
+.loopfig svg{max-width:20rem}
+.ergofig svg{max-width:34rem}
+.tpl{border:1.5px solid #444;padding:1rem 1.2rem;margin:1.4rem 0;break-inside:avoid}
+.tpl h4{margin-top:0}
+.field{display:grid;grid-template-columns:12rem 1fr;gap:.6rem;align-items:end;margin:.5rem 0;font-size:.92rem}
+.field .line{border-bottom:1px solid #444;height:1.6rem}
+.tpl td{height:2rem}
+@media (max-width:520px){.field{grid-template-columns:1fr}}
+.refs{font-size:.88rem;line-height:1.45}
+.refs li{margin:.5rem 0;overflow-wrap:anywhere}
+@media print{
+  body{background:#fff;font-size:11pt;padding:0}
+  .page{border:0;margin:0;padding:0;max-width:none}
+  h2,h3{break-after:avoid}
+  .pb{break-before:page}
+  a{text-decoration:none;color:inherit}
+}
+</style>
+
+<div class="page">
+<h1>Deep Work for Open-Ended Projects</h1>
+<p class="subtitle">An instruction manual for college students</p>
+
+<p>The objective of this manual is to provide detailed instructions and information on how college students (particularly those in STEM-related fields) can independently formulate, plan, and successfully execute open-ended personal projects (such as programming an application, improving mathematical ability, writing a book, painting, etc.) without clear deadlines. We’ve split up these instructions into four concrete chunks that you can find below.</p>
+
+<p>Before we begin, it is critical to define <b>deep work.</b> Cal Newport popularized this term in his seminal work <i>Deep Work</i>, and defined it as</p>
+<blockquote>“Professional activity performed in a state of distraction-free concentration that push your cognitive capabilities to their limit. These efforts create new value, improve your skill, and are hard to replicate.”<sup class="c" data-k="newport"></sup></blockquote>
+<p>Conversely, shallow work is defined as</p>
+<blockquote>“Non-cognitively demanding, logistical-style tasks, often performed while distracted. These efforts tend to not create new value in the world and are easy to replicate.”<sup class="c" data-k="newport"></sup></blockquote>
+<p>Shallow work still has to get done (email, setup, scheduling). It just shouldn’t take the time you set aside for deep work, so give it your low-energy hours (Section 2.2).</p>
+<p><b>Flow state</b>, a related concept coined by Mihaly Csikszentmihalyi, describes a state where one is</p>
+<blockquote>“being completely involved in an activity for its own sake. The ego falls away. Time flies. Every action, movement, and thought follows inevitably from the previous one, like playing jazz. Your whole being is involved, and you're using your skills to the utmost.”<sup class="c" data-k="wired"></sup></blockquote>
+
+<p>Research has empirically supported the importance of deep work and flow state, showing that prolonged, deliberate work that is effortful and improvement-oriented also strongly correlates with expert performance<sup class="c" data-k="ericsson"></sup> (while task switching typically hampers performance and concentration).<sup class="c" data-k="rubinstein"></sup><sup class="c" data-k="leroy"></sup><sup class="c" data-k="stothart"></sup> Flow state in particular has also been strongly correlated with overall well-being and desirable personal and work outcomes.<sup class="c" data-k="flowmeta"></sup><sup class="c" data-k="flow2"></sup></p>
+
+<p>Consequently, this guide will be centred around increasing the likelihood that one consistently achieves these states in pursuit of a larger open-ended project to maximize efficiency, effectiveness, and output per unit of time.</p>
+
+<h4>What you’ll need</h4>
+<ul>
+  <li>One place to write goals down: a notebook, a paper planner, or an app (see Section 1.1). The templates at the end of this manual also work.</li>
+  <li>A calendar (paper, Google Calendar, or Apple Calendar).</li>
+  <li>A timer (phone or kitchen timer).</li>
+  <li>Earbuds or headphones, if you work anywhere noisy.</li>
+</ul>
+
+<p>The following are the core steps:</p>
+
+<figure class="loopfig">
+<svg viewBox="0 0 320 320" role="img" aria-label="The four steps form a cycle: 1 Plan, 2 Schedule, 3 Work, 4 Measure, then back to Plan.">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#666"/></marker></defs>
+  <g fill="none" stroke="#666" stroke-width="2" marker-end="url(#ah)">
+    <path d="M208 61 A110 110 0 0 1 259 112"/><path d="M259 208 A110 110 0 0 1 208 259"/>
+    <path d="M112 259 A110 110 0 0 1 61 208"/><path d="M61 112 A110 110 0 0 1 112 61"/>
+  </g>
+  <g font-family="Helvetica Neue, Arial, sans-serif" text-anchor="middle" font-weight="bold">
+    <circle cx="160" cy="50" r="40" fill="#fff" stroke="#1c3557" stroke-width="2.5"/><text x="160" y="46" font-size="20" fill="#1c3557">1</text><text x="160" y="65" font-size="12" fill="#222">Plan</text>
+    <circle cx="270" cy="160" r="40" fill="#fff" stroke="#1c3557" stroke-width="2.5"/><text x="270" y="156" font-size="20" fill="#1c3557">2</text><text x="270" y="175" font-size="12" fill="#222">Schedule</text>
+    <circle cx="160" cy="270" r="40" fill="#1c3557"/><text x="160" y="266" font-size="20" fill="#fff">3</text><text x="160" y="285" font-size="12" fill="#fff">Work</text>
+    <circle cx="50" cy="160" r="40" fill="#fff" stroke="#1c3557" stroke-width="2.5"/><text x="50" y="156" font-size="20" fill="#1c3557">4</text><text x="50" y="175" font-size="12" fill="#222">Measure</text>
+  </g>
+  <g font-family="Helvetica Neue, Arial, sans-serif" text-anchor="middle" font-size="12" fill="#666"><text x="160" y="156">Repeat until</text><text x="160" y="172">the project is done</text></g>
+</svg>
+<figcaption>Figure 1. The four steps repeat until the project is finished.</figcaption>
+</figure>
+
+<p><b>Table of Contents:</b></p>
+<ol class="toc">
+  <li><a href="#s1"><b>Determining Project Structure:</b></a> analyzing overall goals, tasks, and retroactively decomposing them into smaller short-term objectives (monthly, weekly, daily, etc).
+    <ol><li><b>Multi-Session Goals:</b> how to use timeframes to actively measure progress.</li><li><b>Single-Session Goals:</b> how to create specific, measurable tools for evaluating work sessions.</li><li>How to create goals covering both outcome expectations and learning objectives.</li></ol></li>
+  <li><a href="#s2"><b>Organizing Your Life Around the Project:</b></a> making sure that you're leaving enough time in a day to have other commitments (whether it's other projects, self-care, or out-of-work activities) as well as reasonably scheduling each overarching block of time to ensure the work can be finished over those couple days, etc)
+    <ol><li>Take inventory of your fixed commitments and block them.</li><li>Assigning a reasonable amount of work to blocks that match your energy and level of attention at that said time.</li><li>Building in recovery into your calendar and set your own checkpoints, since no one else will</li></ol></li>
+  <li><a href="#s3"><b>Executing Daily Deep Work:</b></a> Given a project structure and having created sufficient daily time to perform deep work, how do we now execute this structure to achieve high productivity for each work session?
+    <ol><li>Pre-session: defining the core targets for the session and deliverables</li><li>Environmental optimization: setting up your desk and local surroundings for maximum productivity</li><li>In-session: maintaining focus, handling getting stuck, dealing with distractions that occur</li><li>Post-session: taking good breaks, recording task completion</li></ol></li>
+  <li><a href="#s4"><b>Quantifying productivity:</b></a> measuring output throughout your work sessions and making any revisions to the prior steps if needed
+    <ol><li>Define one measurable output before you begin every work session</li><li>Track your results immediately after every work session</li><li>Take your collected results weekly and compare it to your initial estimate from part 1, diagnose your gaps.</li><li>Feed your revisions back into the plan and continue the cycle till the project is complete</li></ol></li>
+  <li><a href="#templates"><b>Templates:</b></a> a weekly plan, a session card, and a weekly review to print for your first two weeks.</li>
+</ol>
+
+<!-- ============ 1 ============ -->
+<h2 id="s1">1. Determining Project Structure</h2>
+<p class="rule">Rule of thumb: if you can’t check it off, it isn’t a goal yet. Every goal gets a timeframe and a finish line.</p>
+
+<h3>1.1 Establishing a goal-tracking platform</h3>
+<ol>
+  <li>Pick one place where every goal in this manual will live: your multi-session goals, your session goals, and your session logs from Section 4. Paper works (a notebook, a planner such as a Passion Planner, or the templates at the end of this manual). So does digital (Google Sheets, Notion, Todoist, or a notes app).</li>
+  <li>Choose the one you’ll actually open every day. A system you abandon after a week is worse than a plain notebook you keep using.</li>
+  <li>If you’re not sure, use the printed templates at the end of this manual for your first two weeks, then decide whether to switch.</li>
+  <li>Keep it where you work. Sections 3 and 4 ask you to write things down before and after every session.</li>
+</ol>
+
+<h3>1.2 Multi-Session Goals: Setting a timeframe for work completion</h3>
+<ol>
+  <li>Set an understanding goal. Create estimates for understanding the project specification, mentally separating the project components, learning dependencies between work items, and any limitations that will steer your solution.<sup class="c" data-k="uvic"></sup></li>
+  <li>Construct a timeframe for completing the understanding goal. Consider in what order you would prefer to understand the project components. Keep in mind that understanding a project component is a prerequisite to implementing it, and the order you complete work will reflect your order of understanding.<sup class="c" data-k="uvic"></sup></li>
+  <li>Set output goals to cover the project components. Describe your goals with timeframes to naturally separate work items and establish a schedule of work, as well as providing a mechanism for checking your progress.<sup class="c" data-k="uvic"></sup><sup class="c" data-k="locke"></sup>
+    <p class="note"><b>Note:</b> Expect your first estimates to be too optimistic. People consistently underestimate how long their own tasks will take, even when they know similar tasks ran late before.<sup class="c" data-k="buehler"></sup> Section 4.3 is where you correct them.</p></li>
+</ol>
+
+<h3>1.3 Single-Session Goals: Creating measurable tools for evaluating work sessions</h3>
+<ol>
+  <li>Break each week’s output goal into pieces that fit in one sitting (at most 90 minutes; see Section 3.3).</li>
+  <li>Write each piece as an output someone else could check, not an activity. Specific, challenging goals lead to better performance than vague “do your best” goals.<sup class="c" data-k="locke"></sup>
+    <div class="tw"><table><thead><tr><th>Session goal</th><th>Not a session goal</th></tr></thead><tbody>
+      <tr><td>Prove lemma 2</td><td>Study for the proof</td></tr>
+      <tr><td>Draft 300 words of chapter 1</td><td>Work on the book</td></tr>
+      <tr><td>Sketch 3 thumbnails for the cover</td><td>Think about the cover</td></tr>
+    </tbody></table></div></li>
+  <li>List the coming week’s session goals on your platform from 1.1. Each day, Section 3.1 pulls the next one off this list.</li>
+</ol>
+
+<h3>1.4 Covering both outcome expectations and learning objectives</h3>
+<ol>
+  <li>For each multi-session goal, write two lines. The <b>outcome goal</b> is what will exist when you’re done. The <b>learning goal</b> is what you’ll be able to do or understand that you can’t now.
+    <p class="note"><b>Example.</b> Outcome: the login page works end to end. Learning: understand how session tokens are stored and checked.</p></li>
+  <li>When the work is new to you, lead with the learning goal. On complex tasks where you don’t have the skills yet, learning goals lead to better performance than outcome goals, which push people to rush for a result before they know how to get it.<sup class="c" data-k="seijts"></sup></li>
+  <li>Once you know how to do the work, switch the emphasis to the outcome goal.</li>
+</ol>
+
+<!-- ============ 2 ============ -->
+<h2 id="s2">2. Organizing Your Life Around the Project</h2>
+<p class="rule">Rule of thumb: block project time like a class you’re enrolled in, with a fixed day and a fixed start time.</p>
+
+<h3>2.1 Take inventory of your fixed commitments and block them</h3>
+<ol>
+  <li>Put every fixed commitment for a normal week on your calendar first: classes, work shifts, commuting, meals, exercise, clubs, and sleep. Budget 7 to 9 hours of sleep a night, the recommended range for adults 18 to 25.<sup class="c" data-k="sleep"></sup></li>
+  <li>Count the open hours that are left. Plan to use fewer of them than you think you can (see Section 1.2 on optimistic estimates).<sup class="c" data-k="buehler"></sup></li>
+  <li>Block project time as recurring calendar events with a specific start time, not “sometime Tuesday.” If you have a job, caretaking duties, or a long commute, build this from your real week, not a typical student schedule.</li>
+</ol>
+
+<h3>2.2 Assigning a reasonable amount of work to blocks that match your energy and level of attention</h3>
+<ol>
+  <li>Write down 2 to 3 times of day when you focus best. Mental performance changes across the day, and your peak depends on whether you’re a morning or an evening person.<sup class="c" data-k="schmidt"></sup></li>
+  <li>Put deep work (Section 3) in those peak blocks. Put shallow work (email, setup, admin) in your low-energy slots.</li>
+  <li>Size each deep work block to the session length you pick in Section 3.3 (never more than 90 minutes without a break). Only assign as many session goals from Section 1.3 as you have blocks for.</li>
+</ol>
+<div class="tw">
+<table>
+  <thead><tr><th></th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">9 to 11 am</th><td>Class</td><td class="deep">Deep work (90 min)</td><td>Class</td><td class="deep">Deep work (90 min)</td><td>Class</td><td class="buf">Buffer</td></tr>
+    <tr><th scope="row">1 to 2 pm</th><td>Shallow work</td><td>Job</td><td class="deep">Deep work (45 min)</td><td>Job</td><td class="buf">Weekly review (4.3)</td><td>Off</td></tr>
+    <tr><th scope="row">8 to 9 pm</th><td>Off</td><td>Off</td><td>Shallow work</td><td>Off</td><td class="buf">Checkpoint with a friend</td><td>Off</td></tr>
+  </tbody>
+</table>
+<p class="cap">Table 1. Example week for a student with morning classes and a part-time job.</p>
+</div>
+
+<h3>2.3 Building in recovery into your calendar and set your own checkpoints, since no one else will</h3>
+<ol>
+  <li>Keep one buffer block a week with nothing assigned to it. When a session gets missed, it moves there instead of pushing your whole schedule back.</li>
+  <li>Schedule real time off from the project. Mentally switching off from work during your off time is linked to better recovery and well-being.<sup class="c" data-k="sonnentag"></sup></li>
+  <li>Set a weekly checkpoint for yourself, on a fixed day, where you run the review in Section 4.3.</li>
+  <li>Tell one person what your checkpoints are and show them your progress. Tracking progress works better when you report it to someone else.<sup class="c" data-k="harkin"></sup> The ideal person knows you well enough to tell you when you need rest, not only when you’re behind.</li>
+</ol>
+
+<!-- ============ 3 ============ -->
+<h2 id="s3">3. Executing Daily Deep Work</h2>
+<p class="rule">Rule of thumb: write down the minimum goal and the first action before you start, and stop at 90 minutes.</p>
+
+<h3>3.1 Pre-session: Defining core targets for session and deliverables</h3>
+<ol>
+  <li>In section 1, we broke down the overarching project objectives into a series of weekly and daily objectives. Now, based on that, take the daily objective you planned, and take the first component of said objective. This should be moderately sized, something that is reasonably achievable in 1-2 hours at most. Use this as your session goal.
+    <p class="note"><b>Note:</b> If 1-2 hours is more than you can focus for right now, pick a smaller piece and split the session into shorter blocks (for example 25-minute Pomodoro blocks with 5-minute breaks). Students who took fixed Pomodoro-style breaks reported less fatigue and distraction, and more concentration and motivation, than students who took breaks whenever they felt like it.<sup class="c" data-k="biwer"></sup> Section 3.3 explains how to pick your length.</p></li>
+  <li>Set both a minimum and stretch goal. Based on the session goal you chose in the previous section, think about the most rudimentary, realistic version of said goal you could achieve in the first 10-20 minutes (that, if completed, would still move you forward). Label this the minimum session goal, and the full 1-2 hour objective as the stretch goal.<sup class="c" data-k="scott"></sup><sup class="c" data-k="bandura"></sup></li>
+  <li>Write both the minimum and maximum goals on the same medium you chose to use as described in section 1 for organization purposes. Place it in a location where it is constantly visible. This will be useful for staying on task in section 3.3. (The session card at the end of this manual has a slot for each.)</li>
+  <li><b>For those who find it hard to start working:</b> write down the first concrete action that you can take to achieve your minimum goal. This will make the process have substantially less friction and make it easier for you to get started.<sup class="c" data-k="gollwitzer"></sup><sup class="c" data-k="gollsheeran"></sup>
+    <p class="note"><b>Why this works:</b> deciding in advance exactly when and how you’ll act (an “implementation intention”) had a medium-to-large effect on actually reaching goals across 94 studies, and it helps most with getting started.<sup class="c" data-k="gollsheeran"></sup></p></li>
+</ol>
+
+<h3>3.2 Environmental optimization: setting up your desk and local surroundings for maximum productivity</h3>
+<p>Note: different individuals suit different working environments, and the following advice may not universally apply to all who are reading these instructions. These are evidence-based best practices for productivity that tend to allow people to focus better and in a healthier manner, so treat them as mini-experiments that you can run and decide to adopt. Feel free to discard advice if you find it personally hampers your productivity.</p>
+<ul>
+  <li>Find a quiet place to begin your work session, one that has sufficiently low volume so that you’re not actively disturbed or distracted.<sup class="c" data-k="jahncke"></sup> If you can’t find such a location, try using noise-cancelling headphones or earbuds to mute some of the noise.<sup class="c" data-k="mueller"></sup>
+    <ul>
+      <li>If it’s particularly bad and you can’t focus, try wearing earbuds, and then headphones over the earbuds to block out most noises.</li>
+      <li>Some people focus worse in silence. If that’s you, try a moderate background hum instead, like a café. In one set of experiments, moderate ambient noise (around 70 dB) improved creative thinking compared to a quiet room, while loud noise (85 dB) hurt it.<sup class="c" data-k="mehta70"></sup></li>
+    </ul></li>
+  <li>Not every project happens at a computer. If you’re painting, playing an instrument, or working on paper, skip the screen and keyboard advice below and apply the same ideas to your own setup: a clear surface, good light, and a posture you can hold for the whole session.</li>
+  <li>If you have the ability to setup your work session (e.g. You’re working at home on your desk), then read the following subbullets. Otherwise, skip to the next section.
+    <ul>
+      <li>To make your setup optimized for long-term comfort, lift your monitor or screen to roughly eye level. Ensure that your elbows are at a 90 degree angle when typing, and that your chair has adequate back support to prevent being actively hunched over. You may need to raise your chair height or place your monitor on books to achieve these desired configurations.<sup class="c" data-k="osha"></sup><sup class="c" data-k="oshapos"></sup></li>
+      <li>Keep your pelvis upright. If your hips roll back, your spine slumps no matter how good the backrest is. Sit all the way back in the seat, and if your chair doesn’t hold your hips upright, try a firm cushion or a rolled towel behind your lower back for lumbar support.<sup class="c" data-k="oshapos"></sup></li>
+      <li>If you don’t have a monitor and just have a laptop, try to place your laptop in an elevated position and use an external keyboard and mouse instead. If this isn’t possible, no worries (do not let perfect be the enemy of good): try and implement as much of the other advice as possible instead.</li>
+    </ul></li>
+</ul>
+
+<figure class="ergofig">
+<svg viewBox="0 0 560 330" role="img" aria-label="Side view of a seated person at a desk: top of the screen at or just below eye level, elbows between 90 and 120 degrees, pelvis upright against the chair back, feet flat on the floor.">
+  <line x1="20" y1="310" x2="540" y2="310" stroke="#888" stroke-width="2"/>
+  <rect x="300" y="196" width="220" height="10" fill="#ddd" stroke="#888"/>
+  <rect x="500" y="206" width="10" height="104" fill="#ddd" stroke="#888"/>
+  <rect x="444" y="96" width="12" height="80" fill="#333"/>
+  <rect x="448" y="176" width="4" height="12" fill="#333"/>
+  <rect x="430" y="186" width="40" height="10" fill="#ddd" stroke="#888"/>
+  <rect x="330" y="190" width="50" height="6" fill="#333"/>
+  <g fill="#ddd" stroke="#888" stroke-width="1.5">
+    <rect x="130" y="206" width="110" height="12" rx="3"/>
+    <rect x="120" y="110" width="14" height="108" rx="4"/>
+    <rect x="178" y="218" width="8" height="70"/>
+    <rect x="140" y="288" width="84" height="6" rx="3"/>
+  </g>
+  <g stroke="#1c3557" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M150 200 L152 120"/><path d="M150 200 L240 200 L246 300 L275 300"/><path d="M152 132 L165 192 L230 190"/>
+  </g>
+  <circle cx="156" cy="96" r="20" fill="#1c3557"/>
+  <line x1="170" y1="96" x2="444" y2="96" stroke="#b5542a" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <path d="M165 176 L180 176 L180 192" fill="none" stroke="#b5542a" stroke-width="2"/>
+  <g font-family="Helvetica Neue, Arial, sans-serif" font-size="13" fill="#222">
+    <text x="236" y="88">Top of screen at or just below eye level</text>
+    <text x="190" y="160">Elbows 90° to 120°</text>
+    <text x="20" y="160">Pelvis upright,</text>
+    <text x="20" y="176">back supported</text>
+    <text x="290" y="296">Feet flat on the floor</text>
+    <text x="330" y="232">Screen 20 to 40 in. from your eyes</text>
+  </g>
+</svg>
+<figcaption>Figure 2. Target desk setup, based on OSHA’s computer workstation guidance.</figcaption>
+</figure>
+
+<ul>
+  <li>If you don’t have the ability to setup your work session (e.g. You’re working in public), read the following subbullets, in order.
+    <ol>
+      <li>Find a place with adequate power outlets to ensure that laptop battery is not a concern.</li>
+      <li>Try adjusting the seat or desk height if possible to obtain a 90 degree angle between your elbows and the desk. Again, if this is not possible, do not worry!</li>
+      <li>Make sure the area you’re in is safe before you start working, and put in your earbuds/headphones!</li>
+    </ol></li>
+</ul>
+
+<h4>Other things to try</h4>
+<p>Try these one at a time for a week each and keep what helps (Section 3.4).</p>
+<ul>
+  <li><b>Light.</b> Work near a window or under bright light during the day. Brighter white light made people feel more alert in most of the studies that tested it.<sup class="c" data-k="light"></sup></li>
+  <li><b>Temperature.</b> Aim for a room that feels slightly cool. Office task performance peaked around 22 °C (about 72 °F) and dropped as rooms got warmer.<sup class="c" data-k="temp"></sup></li>
+  <li><b>Clutter.</b> Clear everything off your desk that the session doesn’t need, including your phone. Extra objects in view compete for your brain’s attention,<sup class="c" data-k="clutter"></sup> and even a phone notification you don’t answer disrupts focus.<sup class="c" data-k="stothart"></sup></li>
+  <li><b>Plants.</b> Put a plant in view. Adding plants to bare offices improved concentration and measured productivity in three field experiments.<sup class="c" data-k="plants"></sup></li>
+  <li><b>Ceiling and color.</b> These effects are smaller. In lab studies, high ceilings nudged people toward big-picture thinking and low ceilings toward detail work,<sup class="c" data-k="ceiling"></sup> and red backgrounds helped detail-oriented tasks while blue helped creative ones, though that color result has been disputed.<sup class="c" data-k="color"></sup> Try these last.</li>
+</ul>
+
+<h3>3.3 In-session: maintaining focus, handling getting stuck, dealing with distractions that occur</h3>
+<ol>
+  <li>First, decide on an optimal working duration for the session. This will be highly dependent on your prior continuous work capacity. For instance, if you struggle to focus even 25 minutes at a time, it is unwise to attempt a session for 1-2 hours continuously. Therefore, we advise the following. Take the longest consecutive time you’ve been able to consecutively focus (that’s still less than 90 minutes), and try and sit for that duration of time.
+    <ul>
+      <li><b>We recommend capping the session at 90 minutes</b> due to various research (linked below) that suggest human focus cycles can follow roughly 90 minute cycles, and empirical work suggests stopping sessions around this length.<sup class="c" data-k="kleitman"></sup><sup class="c" data-k="ericsson"></sup></li>
+      <li>that demonstrates that human focus cycles tend to occur in 90 minute bouts, synced with ultradian cycles. For this reason, if you are attempting a longer session (e.g. 3 hours), we recommend you divide it into at most 90 minute chunks (feel free to make the duration low if you feel that you are unable to focus for that long), and then take short 10-20 minute breaks between each.<sup class="c" data-k="kleitman"></sup><sup class="c" data-k="albulescu"></sup></li>
+    </ul></li>
+  <li>Make sure that your notes with the minimum and stretch goals from section 3.1 is in front of you and visible. If you wrote down the immediate next step that you will take, read that again as well.</li>
+  <li>Now, begin the work session with the task that’s written down. Ideally this should be with no music, or minimal non-distracting, non-lyrical music that will not drag your attention to it (evidence, linked below, shows that music with lyrics tends to hurt productivity while instrumental music can have neutral/slightly negative effects for very demanding tasks).<sup class="c" data-k="souza"></sup><sup class="c" data-k="kampfe"></sup>
+    <p class="note"><b>Note:</b> if music is the thing that gets you to sit down at all, use it. Software developers who picked their own music reported better mood and produced better work than without music,<sup class="c" data-k="lesiuk"></sup> though music you like still hurts memory-heavy work like memorizing or close reading.<sup class="c" data-k="perham"></sup> A session with music beats no session. Try it both ways and compare your logs in Section 4.</p></li>
+  <li>If you begin to feel distracted and urges that wish to pull you away from the work, take a second to close your eyes and take a full inhale and long, slow exhale. Then open your eyes and return to work. Evidence (linked below) shows that mindful breathing can help reduce mind-wandering symptoms as opposed to pure relaxation.<sup class="c" data-k="mrazek"></sup></li>
+  <li>If you get stuck on a problem, don’t leave the session. Write down exactly where you’re stuck in one sentence, then drop to your minimum goal from Section 3.1 or to a different piece of the same task. Come back to the stuck part at the start of your next session.</li>
+  <li>Keep going until the session is done!
+    <ul><li>If your session consists of multiple work blocks of &lt;= 90 minutes, at the end of each, take a small break for 10-20 minutes. Make sure this break is timed so that it doesn’t bleed into the next session and try and let your mind actively rest. Then, return to work.<sup class="c" data-k="albulescu"></sup></li></ul></li>
+</ol>
+
+<h3>3.4 Post-session: taking good breaks, recording task completion</h3>
+<ol>
+  <li>Now that the session is over, reflect on what went well and didn’t go well. Was the work session effective? Did you find yourself able to achieve flow state (see the definition at the start of this manual)? Were you distracted by tasks, thoughts, people, etc throughout? If so, what were the greatest sources of distraction?<sup class="c" data-k="distefano"></sup></li>
+  <li>Based on this, see if there’s any variable you’d change before beginning your next work session. Productivity and deep work is an experiment, and you likely won’t arrive at the most optimal configuration for you the first time!</li>
+  <li>Write your answers on the session card before you get up, then log the result as described in Section 4.2.</li>
+</ol>
+
+<!-- ============ 4 ============ -->
+<h2 id="s4">4. Quantifying Productivity</h2>
+<p class="rule">Rule of thumb: log every session the moment it ends, review once a week, and change one thing at a time.</p>
+
+<h3>4.1 Define one measurable output before you begin every work session</h3>
+<ol>
+  <li>Your minimum goal from Section 3.1 is this output. Write it so that someone else could check whether you did it.</li>
+  <li>For creative or exploratory work (a novel, a painting, open research), you often can’t know the output in advance. Make the measurable output about the process instead: “write 500 words,” “45 minutes of freewriting on chapter 3,” “3 color studies,” or “try 2 approaches to the proof.” You’re checking that the session happened and produced something, not that it produced the right thing.</li>
+</ol>
+
+<h3>4.2 Track your results immediately after every work session</h3>
+<ol>
+  <li>Before you get up, log five things: the date, your planned output, the result (done, partial, or not done), minutes of actual focused work, and one line on what helped or hurt. Across 138 studies, monitoring progress toward a goal made people more likely to reach it, and the effect was larger when progress was physically written down or reported to someone.<sup class="c" data-k="harkin"></sup></li>
+  <li>Keep notes to one line. A log that’s too tedious to fill out will stop getting filled out.</li>
+</ol>
+<div class="tw">
+<table>
+  <thead><tr><th>Date</th><th>Planned output</th><th>Result</th><th>Focused min</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>Mon 10/5</td><td>Outline intro section</td><td>Done</td><td>70</td><td>Phone in other room helped</td></tr>
+    <tr><td>Tue 10/6</td><td>Fix login bug</td><td>Partial</td><td>85</td><td>Found a deeper issue underneath</td></tr>
+    <tr><td>Thu 10/8</td><td>Write unit tests</td><td>Not done</td><td>20</td><td>Started late, roommate noise</td></tr>
+  </tbody>
+</table>
+<p class="cap">Table 2. Example session log.</p>
+</div>
+
+<h3>4.3 Take your collected results weekly and compare it to your initial estimate from part 1, diagnose your gaps</h3>
+<ol>
+  <li>At your weekly checkpoint (Section 2.3), count how many sessions hit at least their minimum goal and divide by the sessions you planned. Write that completion rate down each week. One week alone is noise, so look at the trend over 3 to 4 weeks.</li>
+  <li>Compare what you finished to the timeframe you set in Section 1.2. Are you ahead, on track, or behind?</li>
+  <li>If you’re behind, name the cause and fix it in the matching section. Trainees who spent the last 15 minutes of each day writing reflections scored higher on a final test than trainees who spent that time practicing.<sup class="c" data-k="distefano"></sup>
+    <div class="tw"><table><thead><tr><th>Cause</th><th>What it looks like</th><th>Fix in</th></tr></thead><tbody>
+      <tr><td>Estimation</td><td>Goals were bigger than they looked</td><td>Sections 1.2 and 1.3</td></tr>
+      <tr><td>Scheduling</td><td>Sessions got skipped or landed in low-energy slots</td><td>Section 2</td></tr>
+      <tr><td>Focus or environment</td><td>Sessions happened but little got done</td><td>Section 3</td></tr>
+    </tbody></table></div></li>
+  <li>A missed goal is not automatically a discipline problem. If you were sick, stressed, or your week blew up, say so. Diagnosing the wrong cause leads to the wrong fix.</li>
+</ol>
+
+<h3>4.4 Feed your revisions back into the plan and continue the cycle till the project is complete</h3>
+<ol>
+  <li>Make one change per week, the same way you run the experiments in Section 3.4. If you change everything at once, you won’t know what worked.</li>
+  <li>Update your timeframe in Section 1.2 with what you now know about your real pace.</li>
+  <li>Repeat: plan (Section 1), schedule (Section 2), work (Section 3), measure (Section 4), until the project is done.</li>
+</ol>
+
+<!-- ============ templates ============ -->
+<h2 id="templates" class="pb">5. Templates</h2>
+<p>Print two copies of the weekly plan and review, and about ten session cards, for your first two weeks.</p>
+
+<div class="tpl">
+  <h4>Weekly Plan (week of ____________)</h4>
+  <div class="field"><span>Outcome goal (1.4)</span><div class="line"></div></div>
+  <div class="field"><span>Learning goal (1.4)</span><div class="line"></div></div>
+  <div class="field"><span>Checkpoint day and person (2.3)</span><div class="line"></div></div>
+  <div class="tw"><table>
+    <thead><tr><th style="width:12%">Day</th><th style="width:22%">Start time</th><th>Session goal (1.3)</th><th style="width:12%">Done?</th></tr></thead>
+    <tbody><tr><td>Mon</td><td></td><td></td><td></td></tr><tr><td>Tue</td><td></td><td></td><td></td></tr><tr><td>Wed</td><td></td><td></td><td></td></tr><tr><td>Thu</td><td></td><td></td><td></td></tr><tr><td>Fri</td><td></td><td></td><td></td></tr><tr><td>Sat</td><td></td><td></td><td></td></tr><tr><td>Sun</td><td></td><td></td><td></td></tr></tbody></table></div>
+  <div class="field"><span>Buffer block</span><div class="line"></div></div>
+</div>
+
+<div class="tpl">
+  <h4>Session Card (date ____________)</h4>
+  <div class="field"><span>Session goal (3.1)</span><div class="line"></div></div>
+  <div class="field"><span>Minimum goal (first 10-20 min)</span><div class="line"></div></div>
+  <div class="field"><span>Stretch goal</span><div class="line"></div></div>
+  <div class="field"><span>First concrete action</span><div class="line"></div></div>
+  <div class="field"><span>Planned length (90 min max)</span><div class="line"></div></div>
+  <p>Result: ☐ Done &nbsp; ☐ Partial &nbsp; ☐ Not done &nbsp;&nbsp;&nbsp; Focused minutes: ______ &nbsp;&nbsp;&nbsp; Reached flow? ☐ Yes &nbsp; ☐ No</p>
+  <div class="field"><span>Biggest distraction</span><div class="line"></div></div>
+  <div class="field"><span>One thing to change next time</span><div class="line"></div></div>
+</div>
+
+<div class="tpl">
+  <h4>Weekly Review (week of ____________)</h4>
+  <p>Sessions planned: ______ &nbsp;&nbsp; Hit minimum goal: ______ &nbsp;&nbsp; Completion rate: ______ %</p>
+  <p>Compared to my 1.2 timeframe I am: ☐ Ahead &nbsp; ☐ On track &nbsp; ☐ Behind</p>
+  <p>Main cause of any gap: ☐ Estimation (1) &nbsp; ☐ Scheduling (2) &nbsp; ☐ Focus or environment (3) &nbsp; ☐ Life happened</p>
+  <div class="field"><span>The one change for next week</span><div class="line"></div></div>
+  <div class="field"><span>Updated timeframe</span><div class="line"></div></div>
+</div>
+
+<h2 id="refs" class="pb">References</h2>
+<ol class="refs" id="reflist"></ol>
+</div>
+
+<script>
+const REFS = {"newport": {"c": "Newport, C. (2016). <i>Deep work: Rules for focused success in a distracted world</i>. Grand Central Publishing.", "u": ""}, "wired": {"c": "Geirland, J. (1996, September 1). Go with the flow [Interview with Mihaly Csikszentmihalyi]. <i>Wired</i>.", "u": "https://www.wired.com/1996/09/czik/"}, "ericsson": {"c": "Ericsson, K. A., Krampe, R. T., &amp; Tesch-Römer, C. (1993). The role of deliberate practice in the acquisition of expert performance. <i>Psychological Review, 100</i>(3), 363-406.", "u": "https://doi.org/10.1037/0033-295X.100.3.363"}, "rubinstein": {"c": "Rubinstein, J. S., Meyer, D. E., &amp; Evans, J. E. (2001). Executive control of cognitive processes in task switching. <i>Journal of Experimental Psychology: Human Perception and Performance, 27</i>(4), 763-797.", "u": "https://doi.org/10.1037/0096-1523.27.4.763"}, "leroy": {"c": "Leroy, S. (2009). Why is it so hard to do my work? The challenge of attention residue when switching between work tasks. <i>Organizational Behavior and Human Decision Processes, 109</i>(2), 168-181.", "u": "https://doi.org/10.1016/j.obhdp.2009.04.002"}, "stothart": {"c": "Stothart, C., Mitchum, A., &amp; Yehnert, C. (2015). The attentional cost of receiving a cell phone notification. <i>Journal of Experimental Psychology: Human Perception and Performance, 41</i>(4), 893-897.", "u": "https://doi.org/10.1037/xhp0000100"}, "flowmeta": {"c": "Liu, W., Lu, H., Li, P., van der Linden, D., &amp; Bakker, A. B. (2023). Antecedents and outcomes of work-related flow: A meta-analysis. <i>Journal of Vocational Behavior, 144</i>, 103891.", "u": "https://doi.org/10.1016/j.jvb.2023.103891"}, "flow2": {"c": "Sweeny, K., Medina Huerta, J., Hawes, J., &amp; Susoeff, S. (2026). Just keep flowing: A meta-analysis on the relationship between flow and well-being. <i>Emotion, 26</i>(6), 1323-1335.", "u": "https://doi.org/10.1037/emo0001657"}, "uvic": {"c": "McCardle, L., Webster, E. A., Haffey, A., &amp; Hadwin, A. F. (2017). Examining students’ self-set goals for self-regulated learning: Goal properties and patterns. <i>Studies in Higher Education, 42</i>(11), 2153-2169.", "u": "https://doi.org/10.1080/03075079.2015.1135117"}, "locke": {"c": "Locke, E. A., &amp; Latham, G. P. (2002). Building a practically useful theory of goal setting and task motivation: A 35-year odyssey. <i>American Psychologist, 57</i>(9), 705-717.", "u": "https://doi.org/10.1037/0003-066X.57.9.705"}, "buehler": {"c": "Buehler, R., Griffin, D., &amp; Ross, M. (1994). Exploring the “planning fallacy”: Why people underestimate their task completion times. <i>Journal of Personality and Social Psychology, 67</i>(3), 366-381.", "u": "https://doi.org/10.1037/0022-3514.67.3.366"}, "seijts": {"c": "Seijts, G. H., &amp; Latham, G. P. (2005). Learning versus performance goals: When should each be used? <i>Academy of Management Executive, 19</i>(1), 124-131.", "u": "https://doi.org/10.5465/ame.2005.15841964"}, "sleep": {"c": "Hirshkowitz, M., Whiton, K., Albert, S. M., et al. (2015). National Sleep Foundation’s sleep time duration recommendations: Methodology and results summary. <i>Sleep Health, 1</i>(1), 40-43.", "u": "https://doi.org/10.1016/j.sleh.2014.12.010"}, "schmidt": {"c": "Schmidt, C., Collette, F., Cajochen, C., &amp; Peigneux, P. (2007). A time to think: Circadian rhythms in human cognition. <i>Cognitive Neuropsychology, 24</i>(7), 755-789.", "u": "https://doi.org/10.1080/02643290701754158"}, "sonnentag": {"c": "Sonnentag, S., &amp; Fritz, C. (2007). The Recovery Experience Questionnaire: Development and validation of a measure for assessing recuperation and unwinding from work. <i>Journal of Occupational Health Psychology, 12</i>(3), 204-221.", "u": "https://doi.org/10.1037/1076-8998.12.3.204"}, "harkin": {"c": "Harkin, B., Webb, T. L., Chang, B. P. I., Prestwich, A., Conner, M., Kellar, I., Benn, Y., &amp; Sheeran, P. (2016). Does monitoring goal progress promote goal attainment? A meta-analysis of the experimental evidence. <i>Psychological Bulletin, 142</i>(2), 198-229.", "u": "https://doi.org/10.1037/bul0000025"}, "biwer": {"c": "Biwer, F., Wiradhany, W., oude Egbrink, M. G. A., &amp; de Bruin, A. B. H. (2023). Understanding effort regulation: Comparing ‘Pomodoro’ breaks and self-regulated breaks. <i>British Journal of Educational Psychology, 93</i>(S2), 353-367.", "u": "https://doi.org/10.1111/bjep.12593"}, "scott": {"c": "Scott, M. L., &amp; Nowlis, S. M. (2013). The effect of goal specificity on consumer goal reengagement. <i>Journal of Consumer Research, 40</i>(3), 444-459.", "u": "https://doi.org/10.1086/670766"}, "bandura": {"c": "Bandura, A., &amp; Schunk, D. H. (1981). Cultivating competence, self-efficacy, and intrinsic interest through proximal self-motivation. <i>Journal of Personality and Social Psychology, 41</i>(3), 586-598.", "u": "https://doi.org/10.1037/0022-3514.41.3.586"}, "gollwitzer": {"c": "Gollwitzer, P. M. (1999). Implementation intentions: Strong effects of simple plans. <i>American Psychologist, 54</i>(7), 493-503.", "u": "https://doi.org/10.1037/0003-066X.54.7.493"}, "gollsheeran": {"c": "Gollwitzer, P. M., &amp; Sheeran, P. (2006). Implementation intentions and goal achievement: A meta-analysis of effects and processes. <i>Advances in Experimental Social Psychology, 38</i>, 69-119.", "u": "https://doi.org/10.1016/S0065-2601(06)38002-1"}, "jahncke": {"c": "Jahncke, H., &amp; Hallman, D. M. (2020). Objective measures of cognitive performance in activity based workplaces and traditional office types. <i>Journal of Environmental Psychology, 72</i>, 101503.", "u": "https://doi.org/10.1016/j.jenvp.2020.101503"}, "mueller": {"c": "Mueller, B. J., Liebl, A., Herget, N., Kohler, D., &amp; Leistner, P. (2022). Using active noise-cancelling headphones in open-plan offices: No influence on cognitive performance but improvement of perceived privacy and acoustic environment. <i>Frontiers in Built Environment, 8</i>, 962462.", "u": "https://doi.org/10.3389/fbuil.2022.962462"}, "mehta70": {"c": "Mehta, R., Zhu, R., &amp; Cheema, A. (2012). Is noise always bad? Exploring the effects of ambient noise on creative cognition. <i>Journal of Consumer Research, 39</i>(4), 784-799.", "u": "https://doi.org/10.1086/665048"}, "osha": {"c": "Occupational Safety and Health Administration. (n.d.). <i>Computer workstations eTool: Monitors</i>.", "u": "https://www.osha.gov/etools/computer-workstations/components/monitors"}, "oshapos": {"c": "Occupational Safety and Health Administration. (n.d.). <i>Computer workstations eTool: Neutral working postures</i>.", "u": "https://www.osha.gov/etools/computer-workstations/positions"}, "light": {"c": "Souman, J. L., Tinga, A. M., te Pas, S. F., van Ee, R., &amp; Vlaskamp, B. N. S. (2018). Acute alerting effects of light: A systematic literature review. <i>Behavioural Brain Research, 337</i>, 228-239.", "u": "https://doi.org/10.1016/j.bbr.2017.09.016"}, "temp": {"c": "Seppänen, O., Fisk, W. J., &amp; Lei, Q. H. (2006). <i>Effect of temperature on task performance in office environment</i> (Report LBNL-60946). Lawrence Berkeley National Laboratory.", "u": "https://eta-publications.lbl.gov/sites/default/files/lbnl-60946.pdf"}, "clutter": {"c": "McMains, S., &amp; Kastner, S. (2011). Interactions of top-down and bottom-up mechanisms in human visual cortex. <i>Journal of Neuroscience, 31</i>(2), 587-597.", "u": "https://doi.org/10.1523/JNEUROSCI.3766-10.2011"}, "plants": {"c": "Nieuwenhuis, M., Knight, C., Postmes, T., &amp; Haslam, S. A. (2014). The relative benefits of green versus lean office space: Three field experiments. <i>Journal of Experimental Psychology: Applied, 20</i>(3), 199-214.", "u": "https://doi.org/10.1037/xap0000024"}, "ceiling": {"c": "Meyers-Levy, J., &amp; Zhu, R. (2007). The influence of ceiling height: The effect of priming on the type of processing that people use. <i>Journal of Consumer Research, 34</i>(2), 174-186.", "u": "https://doi.org/10.1086/519146"}, "color": {"c": "Mehta, R., &amp; Zhu, R. J. (2009). Blue or red? Exploring the effect of color on cognitive task performances. <i>Science, 323</i>(5918), 1226-1229.", "u": "https://doi.org/10.1126/science.1169144"}, "kleitman": {"c": "Kleitman, N. (1982). Basic rest-activity cycle: 22 years later. <i>Sleep, 5</i>(4), 311-317.", "u": "https://doi.org/10.1093/sleep/5.4.311"}, "albulescu": {"c": "Albulescu, P., Macsinga, I., Rusu, A., Sulea, C., Bodnaru, A., &amp; Tulbure, B. T. (2022). “Give me a break!” A systematic review and meta-analysis on the efficacy of micro-breaks for increasing well-being and performance. <i>PLOS ONE, 17</i>(8), e0272460.", "u": "https://doi.org/10.1371/journal.pone.0272460"}, "souza": {"c": "Souza, A. S., &amp; Leal Barbosa, L. C. (2023). Should we turn off the music? Music with lyrics interferes with cognitive tasks. <i>Journal of Cognition, 6</i>(1), 24.", "u": "https://doi.org/10.5334/joc.273"}, "kampfe": {"c": "Kämpfe, J., Sedlmeier, P., &amp; Renkewitz, F. (2011). The impact of background music on adult listeners: A meta-analysis. <i>Psychology of Music, 39</i>(4), 424-448.", "u": "https://doi.org/10.1177/0305735610376261"}, "lesiuk": {"c": "Lesiuk, T. (2005). The effect of music listening on work performance. <i>Psychology of Music, 33</i>(2), 173-191.", "u": "https://doi.org/10.1177/0305735605050650"}, "perham": {"c": "Perham, N., &amp; Vizard, J. (2011). Can preference for background music mediate the irrelevant sound effect? <i>Applied Cognitive Psychology, 25</i>(4), 625-631.", "u": "https://doi.org/10.1002/acp.1731"}, "mrazek": {"c": "Mrazek, M. D., Smallwood, J., &amp; Schooler, J. W. (2012). Mindfulness and mind-wandering: Finding convergence through opposing constructs. <i>Emotion, 12</i>(3), 442-448.", "u": "https://doi.org/10.1037/a0026678"}, "distefano": {"c": "Di Stefano, G., Gino, F., Pisano, G. P., &amp; Staats, B. R. (2016). <i>Making experience count: The role of reflection in individual learning</i> (Harvard Business School Working Paper No. 14-093).", "u": "https://doi.org/10.2139/ssrn.2414478"}};
+(function(){
+  var order=[],seen={};
+  document.querySelectorAll('sup.c').forEach(function(s){var k=s.dataset.k;if(!REFS[k]){s.remove();return;}if(!(k in seen)){seen[k]=order.length+1;order.push(k);}});
+  document.querySelectorAll('sup.c').forEach(function(s){
+    if(!s.isConnected||s.dataset.done)return;
+    var ks=[s.dataset.k],n=s.nextSibling;
+    while(n&&n.nodeType===1&&n.matches('sup.c')){ks.push(n.dataset.k);var x=n.nextSibling;n.remove();n=x;}
+    ks=ks.filter(function(k,i){return ks.indexOf(k)===i;});
+    s.innerHTML='['+ks.map(function(k){return '<a href="#ref-'+k+'">'+seen[k]+'</a>';}).join(', ')+']';
+    s.dataset.done=1;
+  });
+  var ol=document.getElementById('reflist');
+  order.forEach(function(k){var r=REFS[k],li=document.createElement('li');li.id='ref-'+k;li.innerHTML=r.c+(r.u?' <a href="'+r.u+'">'+r.u+'</a>':'');ol.appendChild(li);});
+})();
+</script>
+
+</body>
+</html>
