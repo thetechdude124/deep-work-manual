@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Deep Work for Open-Ended Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#222;--head:#1c3557;--muted:#666;--rule:#cfcfcf;--shade:#f1f3f6;--hi:#b5542a;--page:#ffffff;--bg:#ececec;color-scheme:light}
 *{box-sizing:border-box}
@@ -50,40 +53,44 @@ figure svg{width:100%;height:auto;display:block;margin:0 auto}
 .field.q .line{height:3.2rem;background:linear-gradient(transparent calc(50% - 1px),#444 calc(50% - 1px),#444 50%,transparent 50%)}
 .tpl-sub{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.78rem;font-weight:bold;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:1.1rem 0 .2rem}
 .cardnote{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.9rem;background:var(--shade);border-left:3px solid var(--hi);padding:.5rem .8rem}
-/* Sample session card that follows Section 3 */
+/* Example session card that pops up beside Section 3 */
 .cardpanel{display:none}
-.cardpanel .tpl{margin:0;border:0;padding:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
-.cardpanel .tpl h4{font-size:.95rem;margin:0 0 .2rem}
-.cardpanel .field,.cardpanel .field.q{grid-template-columns:1fr;gap:.1rem;font-size:.8rem;margin:.15rem -.5rem;padding:.3rem .5rem;border-left:3px solid transparent;align-items:start}
-.cardpanel p[data-f]{font-size:.8rem;margin:.15rem -.5rem;padding:.3rem .5rem;border-left:3px solid transparent}
-.cardpanel .field .line{height:1.1rem;background:none}
-.cardpanel .field.q .line{height:1.1rem}
-.cardpanel .ex{display:none;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:.85rem;color:#3a3a3a;line-height:1.35;border-bottom:1px solid #999;padding-bottom:.15rem}
-.cardpanel .filled .ex{display:block}
-.cardpanel .filled .line{display:none}
-.cardpanel .tpl [data-f].on{background:#f6e3da;border-left-color:var(--hi)}
-.cardpanel .tpl [data-f].on .ex{color:#222}
-.cardpanel .tpl-sub{margin:.6rem 0 .1rem;font-size:.68rem}
-.cp-head{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.72rem;color:var(--muted);margin-bottom:.5rem}
-.cp-close{border:0;background:none;color:var(--muted);font-size:1.1rem;line-height:1;cursor:pointer;padding:0 .2rem}
-.cp-tag{color:var(--hi);font-weight:bold;text-transform:uppercase;letter-spacing:.06em}
 @media screen{
-  .cardpanel{display:block;background:var(--page);border:1.5px solid #444;padding:.8rem 1rem;opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility 0s .25s}
-  .cardpanel.show{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s}
+  :root{--ink-pen:#1f3f8f;--mark:#f8e0d2}
+  .page{transition:transform .35s ease}
+  html.card-open .page{transform:translateX(calc(var(--shift,0px) * -1))}
+  .card-on{background:var(--mark);box-shadow:0 0 0 .3rem var(--mark);border-radius:2px}
+  span.card-on{box-shadow:none;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:.05rem 0}
+  .cardpanel{display:block;position:fixed;z-index:5;background:var(--page);border:1px solid #bbb;box-shadow:0 6px 24px rgba(0,0,0,.14);padding:.8rem .9rem .9rem;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,transform .35s ease,visibility 0s .35s}
+  .cardpanel.show{opacity:1;visibility:visible;transition:opacity .3s,transform .35s ease}
+  .cardpanel.side{right:16px;top:50%;width:24rem;max-height:calc(100vh - 32px);transform:translate(2rem,-50%)}
+  .cardpanel.side.show{transform:translate(0,-50%)}
+  .cardpanel.sheet{left:16px;right:16px;bottom:0;max-width:50rem;margin:0 auto;max-height:45vh;border-bottom:0;transform:translateY(1.5rem)}
+  .cardpanel.sheet.show{transform:none}
   .cardpanel.gone{display:none}
+  .cp-head{display:flex;justify-content:space-between;align-items:start;gap:.5rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+  .cp-title{font-weight:bold;color:var(--head);font-size:.95rem}
+  .cp-sub{font-size:.76rem;color:var(--muted);line-height:1.35;margin:.15rem 0 .5rem}
+  .cp-now{font-size:.76rem;color:var(--ink);background:var(--mark);padding:.25rem .45rem;margin:0 0 .6rem;border-radius:2px}
+  .cp-now:empty{display:none}
+  .cp-close{border:0;background:none;color:var(--muted);font-size:1.2rem;line-height:1;cursor:pointer;padding:0 .1rem}
+  .cardpanel .tpl{margin:0;padding:.7rem .8rem;font-size:.78rem}
+  .cardpanel .tpl h4{font-size:.9rem;margin:0 0 .3rem}
+  .cardpanel .tpl-sub{font-size:.62rem;margin:.7rem 0 .1rem}
+  .cardpanel .field{grid-template-columns:7.2rem 1fr;gap:.4rem;font-size:.74rem;margin:.1rem -.35rem;padding:.2rem .35rem;line-height:1.25;border-radius:2px}
+  .cardpanel .field.q{grid-template-columns:1fr;gap:.05rem}
+  .cardpanel .field .line,.cardpanel .field.q .line{height:auto;min-height:1.3rem;background:none;border-bottom:1px solid #444;padding-bottom:.05rem}
+  .cardpanel p[data-f]{margin:.1rem -.35rem;padding:.2rem .35rem;font-size:.74rem;line-height:1.6;border-radius:2px}
+  .cardpanel [data-f].on{background:var(--mark);outline:1.5px solid var(--hi)}
+  .hand{font-family:"Caveat","Bradley Hand","Segoe Print",cursive;color:var(--ink-pen);font-size:1.12rem;line-height:1.1}
+  .fe{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.62rem;color:var(--muted);margin-right:.3rem;white-space:nowrap}
+  .cardpanel .box{position:relative}
+  .cardpanel .box .hand{position:absolute;left:-.05rem;top:-.35rem;font-size:1.25rem}
+  .cardpanel .blank .hand{display:inline-block;min-width:2.4rem;border-bottom:1px solid #444;text-align:center}
+  .cardpanel.sheet .tpl{border:0;padding:0}
+  .cardpanel.sheet .tpl>:not(.on){display:none}
 }
-@media screen and (min-width:75rem){
-  .layout{display:grid;grid-template-columns:minmax(0,50rem) 20rem;gap:1.5rem;justify-content:center;align-items:start}
-  .layout>.page{margin:2rem 0}
-  .cardpanel{position:sticky;top:1rem;margin-top:2rem;max-height:calc(100vh - 2rem);overflow-y:auto;transform:translateX(1rem)}
-  .cp-close{display:none}
-}
-@media screen and (max-width:74.99rem){
-  .cardpanel{position:fixed;left:50%;bottom:0;width:min(50rem,calc(100% - 32px));transform:translate(-50%,1rem);max-height:42vh;overflow-y:auto;border-bottom:0;box-shadow:0 -4px 16px rgba(0,0,0,.12);z-index:5}
-  .cardpanel.show{transform:translate(-50%,0)}
-  .cardpanel .tpl h4,.cardpanel .tpl-sub,.cardpanel .tpl>:not(.on){display:none}
-}
-@media (prefers-reduced-motion:reduce){.cardpanel,.cardpanel.show{transition:none}}
+@media (prefers-reduced-motion:reduce){.page,.cardpanel,.cardpanel.show{transition:none}}
 .refs{font-size:.88rem;line-height:1.45}
 .refs li{margin:.5rem 0;overflow-wrap:anywhere}
 details.opt,details.why{margin:.8rem 0;border:1px solid var(--rule);background:var(--shade);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.92rem;line-height:1.5}
@@ -109,7 +116,6 @@ details>.body>:first-child{margin-top:.2rem}
 </head>
 <body>
 
-<div class="layout">
 <div class="page">
 <h1>Deep Work for Open-Ended Projects</h1>
 <p class="subtitle">An instruction manual for college students</p>
@@ -262,20 +268,20 @@ details>.body>:first-child{margin-top:.2rem}
 <p class="rule">Rule of thumb: write down the minimum goal and the first action before you start, and stop at 90 minutes.</p>
 
 <h3>3.1 Pre-session: Defining core targets for session and deliverables</h3>
-<p class="cardnote">As you read this section, the sample session card on the right (at the bottom on a phone) highlights the part each step asks you to fill in and shows an example answer.</p>
+<p class="cardnote" id="cardstart">Each step below fills in part of a session card (the blank template is in Section 5). An example card will pop up on the side (at the bottom on a phone) showing what that step looks like filled in.</p>
 <ol>
-  <li data-card="goal why">In section 1, we broke down the overarching project objectives into a series of weekly and daily objectives. Now, based on that, take the daily objective you planned, and take the first component of said objective. This should be moderately sized, something that is reasonably achievable in 1-2 hours at most. Use this as your session goal, and write one line on why this piece matters to the larger project.
+  <li>In section 1, we broke down the overarching project objectives into a series of weekly and daily objectives. Now, based on that, take the daily objective you planned, and take the first component of said objective. This should be moderately sized, something that is reasonably achievable in 1-2 hours at most. <span data-card="goal">Use this as your session goal,</span> <span data-card="why">and write one line on why this piece matters to the larger project.</span>
     <details class="opt"><summary>Try this</summary><div class="body"><p class="note"><b>Note:</b> If 1-2 hours is more than you can focus for right now, pick a smaller piece and split the session into shorter blocks (for example 25-minute Pomodoro blocks with 5-minute breaks). Section 3.3 explains how to pick your length.</p></div></details></li>
-  <li data-card="min stretch">Set both a minimum and stretch goal. Based on the session goal you chose in the previous section, think about the most rudimentary, realistic version of said goal you could achieve in the first 10-20 minutes (that, if completed, would still move you forward). Label this the minimum session goal, and the full 1-2 hour objective as the stretch goal.
+  <li><span data-card="min stretch">Set both a minimum and stretch goal.</span> <span data-card="min">Based on the session goal you chose in the previous section, think about the most rudimentary, realistic version of said goal you could achieve in the first 10-20 minutes (that, if completed, would still move you forward). Label this the minimum session goal,</span> <span data-card="stretch">and the full 1-2 hour objective as the stretch goal.</span>
     <ul class="warnings" data-card="stretch"><li><strong>Warning: The stretch goal is optional. Missing it does not mean you missed your minimum goal.</strong></li></ul></li>
   <li data-card="min stretch">Write both the minimum and maximum goals on the same medium you chose to use as described in section 1 for organization purposes. Place it in a location where it is constantly visible. This will be useful for staying on task in section 3.3. (The session card at the end of this manual has a slot for each.)</li>
 </ol>
 <details class="opt" data-card="action"><summary>Try this</summary><div class="body"><p><b>For those who find it hard to start working:</b> write down the first concrete action that you can take to achieve your minimum goal. This will make the process have substantially less friction and make it easier for you to get started.</p><details class="why"><summary>Why this works</summary><div class="body"><p>deciding in advance exactly when and how you’ll act (an “implementation intention”) had a medium-to-large effect on actually reaching goals across 94 studies, and it helps most with getting started.<sup class="c" data-k="gollwitzer"></sup><sup class="c" data-k="gollsheeran"></sup></p></div></details></div></details>
 <details class="why"><summary>Why this works</summary><div class="body"><p>Students who took fixed Pomodoro-style breaks reported less fatigue and distraction, and more concentration and motivation, than students who took breaks whenever they felt like it.<sup class="c" data-k="biwer"></sup></p><p><sup class="c" data-k="scott"></sup><sup class="c" data-k="bandura"></sup></p></div></details>
 
-<h3 data-card="setup">3.2 Environmental optimization: setting up your desk and local surroundings for maximum productivity</h3>
+<h3>3.2 Environmental optimization: setting up your desk and local surroundings for maximum productivity</h3>
 <details class="opt"><summary>Side note</summary><div class="body"><p>Note: different individuals suit different working environments, and the following advice may not universally apply to all who are reading these instructions. These are evidence-based best practices for productivity that tend to allow people to focus better and in a healthier manner, so treat them as mini-experiments that you can run and decide to adopt. Feel free to discard advice if you find it personally hampers your productivity.</p></div></details>
-<ul>
+<ul data-card="setup">
   <li>Find a quiet place to begin your work session, one that has sufficiently low volume so that you’re not actively disturbed or distracted. If you can’t find such a location, try using noise-cancelling headphones or earbuds to mute some of the noise.
     <details class="opt"><summary>Try this</summary><div class="body"><ul>
       <li>If it’s particularly bad and you can’t focus, try wearing earbuds, and then headphones over the earbuds to block out most noises.</li>
@@ -323,7 +329,7 @@ details>.body>:first-child{margin-top:.2rem}
 <figcaption>Figure 2. Target desk setup, based on OSHA’s computer workstation guidance.</figcaption>
 </figure>
 
-<ul>
+<ul data-card="setup">
   <li>If you don’t have the ability to setup your work session (e.g. You’re working in public), read the following subbullets, in order.
     <ol>
       <li>Find a place with adequate power outlets to ensure that laptop battery is not a concern.</li>
@@ -363,7 +369,7 @@ details>.body>:first-child{margin-top:.2rem}
 
 <h3>3.4 Post-session: taking good breaks, recording task completion</h3>
 <ol>
-  <li data-card="result well distraction learned feel">Now that the session is over, reflect on what went well and didn’t go well. Was the work session effective? Did you find yourself able to achieve flow state (see the definition at the start of this manual)? When did time fly, and when did it drag? Were you distracted by tasks, thoughts, people, etc throughout? If so, what were the greatest sources of distraction? What do you understand now that you didn’t at the start (your learning goal from Section 1.4)?</li>
+  <li><span data-card="well">Now that the session is over, reflect on what went well and didn’t go well.</span> <span data-card="result">Was the work session effective? Did you find yourself able to achieve flow state (see the definition at the start of this manual)?</span> <span data-card="feel">When did time fly, and when did it drag?</span> <span data-card="distraction">Were you distracted by tasks, thoughts, people, etc throughout? If so, what were the greatest sources of distraction?</span> <span data-card="learned">What do you understand now that you didn’t at the start (your learning goal from Section 1.4)?</span></li>
   <li data-card="change">Based on this, see if there’s any variable you’d change before beginning your next work session. Productivity and deep work is an experiment, and you likely won’t arrive at the most optimal configuration for you the first time!</li>
   <li data-card="next">Write your answers on the session card before you get up, including where you’ll pick up next session, then log the result as described in Section 4.2.</li>
 </ol>
@@ -438,7 +444,7 @@ details>.body>:first-child{margin-top:.2rem}
 </div>
 
 <div class="tpl" id="session-card">
-  <h4>Session Card (date ____________)</h4>
+  <h4>Session Card (date <span class="blank" data-date="Tue 10/6">____________</span>)</h4>
   <p class="tpl-sub">Before you start (3.1 to 3.3)</p>
   <div class="field" data-f="goal" data-ex="Get the login form sending the email and password to the server"><span>Session goal (3.1)</span><div class="line"></div></div>
   <div class="field q" data-f="why" data-ex="This week’s outcome goal is a working login page, and nothing else in the app works without it."><span>Why does this session matter to the bigger project?</span><div class="line"></div></div>
@@ -446,12 +452,12 @@ details>.body>:first-child{margin-top:.2rem}
   <div class="field" data-f="stretch" data-ex="A wrong password shows an error and a right one goes to the home page"><span>Stretch goal</span><div class="line"></div></div>
   <div class="field" data-f="action" data-ex="Open login.js and add a submit handler that prints the form values"><span>First concrete action</span><div class="line"></div></div>
   <div class="field" data-f="setup" data-ex="Desk at home, laptop on two textbooks, phone in the kitchen"><span>Where I’m working and what I set up (3.2)</span><div class="line"></div></div>
-  <div class="field" data-f="length" data-ex="60 minutes, one block"><span>Planned length (90 min max)</span><div class="line"></div></div>
+  <div class="field" data-f="length" data-ex="90 minutes, one block"><span>Planned length (90 min max)</span><div class="line"></div></div>
   <div class="field q" data-f="pull" data-ex="YouTube while the server restarts. If I reach for it, one slow breath and back to the code."><span>What is most likely to pull me away, and what will I do when it does?</span><div class="line"></div></div>
   <p class="tpl-sub">During the session (3.3)</p>
   <div class="field q" data-f="stuck" data-ex="The server gets the request, but the password field is always empty."><span>If I got stuck: where, in one sentence?</span><div class="line"></div></div>
   <p class="tpl-sub">After the session (3.4)</p>
-  <p data-f="result" data-ex="Partial, 55 focused minutes, no flow">Result: ☐ Done &nbsp; ☐ Partial &nbsp; ☐ Not done &nbsp;&nbsp;&nbsp; Focused minutes: ______ &nbsp;&nbsp;&nbsp; Reached flow? ☐ Yes &nbsp; ☐ No</p>
+  <p data-f="result" data-tick="partial no" data-min="85">Result: <span class="box" data-v="done">☐</span> Done &nbsp; <span class="box" data-v="partial">☐</span> Partial &nbsp; <span class="box" data-v="notdone">☐</span> Not done &nbsp;&nbsp;&nbsp; Focused minutes: <span class="blank">______</span> &nbsp;&nbsp;&nbsp; Reached flow? <span class="box" data-v="yes">☐</span> Yes &nbsp; <span class="box" data-v="no">☐</span> No</p>
   <div class="field q" data-f="well" data-ex="The form was sending requests within 20 minutes because I started with my first action instead of rereading tutorials."><span>What went well, and why?</span><div class="line"></div></div>
   <div class="field" data-f="distraction" data-ex="Opened YouTube twice while waiting on the server"><span>Biggest distraction</span><div class="line"></div></div>
   <div class="field q" data-f="feel" data-ex="The first half hour flew. It dragged once I hit the empty password bug."><span>When did time fly, and when did it drag?</span><div class="line"></div></div>
@@ -472,8 +478,7 @@ details>.body>:first-child{margin-top:.2rem}
 <h2 id="refs" class="pb">References</h2>
 <ol class="refs" id="reflist"></ol>
 </div>
-<aside class="cardpanel" id="cardpanel" aria-label="Sample session card"></aside>
-</div>
+<aside class="cardpanel" id="cardpanel" aria-label="Example session card"></aside>
 
 <script>
 const REFS = {"newport": {"c": "Newport, C. (2016). <i>Deep work: Rules for focused success in a distracted world</i>. Grand Central Publishing.", "u": ""}, "wired": {"c": "Geirland, J. (1996, September 1). Go with the flow [Interview with Mihaly Csikszentmihalyi]. <i>Wired</i>.", "u": "https://www.wired.com/1996/09/czik/"}, "ericsson": {"c": "Ericsson, K. A., Krampe, R. T., &amp; Tesch-Römer, C. (1993). The role of deliberate practice in the acquisition of expert performance. <i>Psychological Review, 100</i>(3), 363-406.", "u": "https://doi.org/10.1037/0033-295X.100.3.363"}, "rubinstein": {"c": "Rubinstein, J. S., Meyer, D. E., &amp; Evans, J. E. (2001). Executive control of cognitive processes in task switching. <i>Journal of Experimental Psychology: Human Perception and Performance, 27</i>(4), 763-797.", "u": "https://doi.org/10.1037/0096-1523.27.4.763"}, "leroy": {"c": "Leroy, S. (2009). Why is it so hard to do my work? The challenge of attention residue when switching between work tasks. <i>Organizational Behavior and Human Decision Processes, 109</i>(2), 168-181.", "u": "https://doi.org/10.1016/j.obhdp.2009.04.002"}, "stothart": {"c": "Stothart, C., Mitchum, A., &amp; Yehnert, C. (2015). The attentional cost of receiving a cell phone notification. <i>Journal of Experimental Psychology: Human Perception and Performance, 41</i>(4), 893-897.", "u": "https://doi.org/10.1037/xhp0000100"}, "flowmeta": {"c": "Liu, W., Lu, H., Li, P., van der Linden, D., &amp; Bakker, A. B. (2023). Antecedents and outcomes of work-related flow: A meta-analysis. <i>Journal of Vocational Behavior, 144</i>, 103891.", "u": "https://doi.org/10.1016/j.jvb.2023.103891"}, "flow2": {"c": "Sweeny, K., Medina Huerta, J., Hawes, J., &amp; Susoeff, S. (2026). Just keep flowing: A meta-analysis on the relationship between flow and well-being. <i>Emotion, 26</i>(6), 1323-1335.", "u": "https://doi.org/10.1037/emo0001657"}, "uvic": {"c": "McCardle, L., Webster, E. A., Haffey, A., &amp; Hadwin, A. F. (2017). Examining students’ self-set goals for self-regulated learning: Goal properties and patterns. <i>Studies in Higher Education, 42</i>(11), 2153-2169.", "u": "https://doi.org/10.1080/03075079.2015.1135117"}, "locke": {"c": "Locke, E. A., &amp; Latham, G. P. (2002). Building a practically useful theory of goal setting and task motivation: A 35-year odyssey. <i>American Psychologist, 57</i>(9), 705-717.", "u": "https://doi.org/10.1037/0003-066X.57.9.705"}, "buehler": {"c": "Buehler, R., Griffin, D., &amp; Ross, M. (1994). Exploring the “planning fallacy”: Why people underestimate their task completion times. <i>Journal of Personality and Social Psychology, 67</i>(3), 366-381.", "u": "https://doi.org/10.1037/0022-3514.67.3.366"}, "seijts": {"c": "Seijts, G. H., &amp; Latham, G. P. (2005). Learning versus performance goals: When should each be used? <i>Academy of Management Executive, 19</i>(1), 124-131.", "u": "https://doi.org/10.5465/ame.2005.15841964"}, "sleep": {"c": "Hirshkowitz, M., Whiton, K., Albert, S. M., et al. (2015). National Sleep Foundation’s sleep time duration recommendations: Methodology and results summary. <i>Sleep Health, 1</i>(1), 40-43.", "u": "https://doi.org/10.1016/j.sleh.2014.12.010"}, "schmidt": {"c": "Schmidt, C., Collette, F., Cajochen, C., &amp; Peigneux, P. (2007). A time to think: Circadian rhythms in human cognition. <i>Cognitive Neuropsychology, 24</i>(7), 755-789.", "u": "https://doi.org/10.1080/02643290701754158"}, "sonnentag": {"c": "Sonnentag, S., &amp; Fritz, C. (2007). The Recovery Experience Questionnaire: Development and validation of a measure for assessing recuperation and unwinding from work. <i>Journal of Occupational Health Psychology, 12</i>(3), 204-221.", "u": "https://doi.org/10.1037/1076-8998.12.3.204"}, "harkin": {"c": "Harkin, B., Webb, T. L., Chang, B. P. I., Prestwich, A., Conner, M., Kellar, I., Benn, Y., &amp; Sheeran, P. (2016). Does monitoring goal progress promote goal attainment? A meta-analysis of the experimental evidence. <i>Psychological Bulletin, 142</i>(2), 198-229.", "u": "https://doi.org/10.1037/bul0000025"}, "biwer": {"c": "Biwer, F., Wiradhany, W., oude Egbrink, M. G. A., &amp; de Bruin, A. B. H. (2023). Understanding effort regulation: Comparing ‘Pomodoro’ breaks and self-regulated breaks. <i>British Journal of Educational Psychology, 93</i>(S2), 353-367.", "u": "https://doi.org/10.1111/bjep.12593"}, "scott": {"c": "Scott, M. L., &amp; Nowlis, S. M. (2013). The effect of goal specificity on consumer goal reengagement. <i>Journal of Consumer Research, 40</i>(3), 444-459.", "u": "https://doi.org/10.1086/670766"}, "bandura": {"c": "Bandura, A., &amp; Schunk, D. H. (1981). Cultivating competence, self-efficacy, and intrinsic interest through proximal self-motivation. <i>Journal of Personality and Social Psychology, 41</i>(3), 586-598.", "u": "https://doi.org/10.1037/0022-3514.41.3.586"}, "gollwitzer": {"c": "Gollwitzer, P. M. (1999). Implementation intentions: Strong effects of simple plans. <i>American Psychologist, 54</i>(7), 493-503.", "u": "https://doi.org/10.1037/0003-066X.54.7.493"}, "gollsheeran": {"c": "Gollwitzer, P. M., &amp; Sheeran, P. (2006). Implementation intentions and goal achievement: A meta-analysis of effects and processes. <i>Advances in Experimental Social Psychology, 38</i>, 69-119.", "u": "https://doi.org/10.1016/S0065-2601(06)38002-1"}, "jahncke": {"c": "Jahncke, H., &amp; Hallman, D. M. (2020). Objective measures of cognitive performance in activity based workplaces and traditional office types. <i>Journal of Environmental Psychology, 72</i>, 101503.", "u": "https://doi.org/10.1016/j.jenvp.2020.101503"}, "mueller": {"c": "Mueller, B. J., Liebl, A., Herget, N., Kohler, D., &amp; Leistner, P. (2022). Using active noise-cancelling headphones in open-plan offices: No influence on cognitive performance but improvement of perceived privacy and acoustic environment. <i>Frontiers in Built Environment, 8</i>, 962462.", "u": "https://doi.org/10.3389/fbuil.2022.962462"}, "mehta70": {"c": "Mehta, R., Zhu, R., &amp; Cheema, A. (2012). Is noise always bad? Exploring the effects of ambient noise on creative cognition. <i>Journal of Consumer Research, 39</i>(4), 784-799.", "u": "https://doi.org/10.1086/665048"}, "osha": {"c": "Occupational Safety and Health Administration. (n.d.). <i>Computer workstations eTool: Monitors</i>.", "u": "https://www.osha.gov/etools/computer-workstations/components/monitors"}, "oshapos": {"c": "Occupational Safety and Health Administration. (n.d.). <i>Computer workstations eTool: Neutral working postures</i>.", "u": "https://www.osha.gov/etools/computer-workstations/positions"}, "light": {"c": "Souman, J. L., Tinga, A. M., te Pas, S. F., van Ee, R., &amp; Vlaskamp, B. N. S. (2018). Acute alerting effects of light: A systematic literature review. <i>Behavioural Brain Research, 337</i>, 228-239.", "u": "https://doi.org/10.1016/j.bbr.2017.09.016"}, "temp": {"c": "Seppänen, O., Fisk, W. J., &amp; Lei, Q. H. (2006). <i>Effect of temperature on task performance in office environment</i> (Report LBNL-60946). Lawrence Berkeley National Laboratory.", "u": "https://eta-publications.lbl.gov/sites/default/files/lbnl-60946.pdf"}, "clutter": {"c": "McMains, S., &amp; Kastner, S. (2011). Interactions of top-down and bottom-up mechanisms in human visual cortex. <i>Journal of Neuroscience, 31</i>(2), 587-597.", "u": "https://doi.org/10.1523/JNEUROSCI.3766-10.2011"}, "plants": {"c": "Nieuwenhuis, M., Knight, C., Postmes, T., &amp; Haslam, S. A. (2014). The relative benefits of green versus lean office space: Three field experiments. <i>Journal of Experimental Psychology: Applied, 20</i>(3), 199-214.", "u": "https://doi.org/10.1037/xap0000024"}, "ceiling": {"c": "Meyers-Levy, J., &amp; Zhu, R. (2007). The influence of ceiling height: The effect of priming on the type of processing that people use. <i>Journal of Consumer Research, 34</i>(2), 174-186.", "u": "https://doi.org/10.1086/519146"}, "color": {"c": "Mehta, R., &amp; Zhu, R. J. (2009). Blue or red? Exploring the effect of color on cognitive task performances. <i>Science, 323</i>(5918), 1226-1229.", "u": "https://doi.org/10.1126/science.1169144"}, "kleitman": {"c": "Kleitman, N. (1982). Basic rest-activity cycle: 22 years later. <i>Sleep, 5</i>(4), 311-317.", "u": "https://doi.org/10.1093/sleep/5.4.311"}, "albulescu": {"c": "Albulescu, P., Macsinga, I., Rusu, A., Sulea, C., Bodnaru, A., &amp; Tulbure, B. T. (2022). “Give me a break!” A systematic review and meta-analysis on the efficacy of micro-breaks for increasing well-being and performance. <i>PLOS ONE, 17</i>(8), e0272460.", "u": "https://doi.org/10.1371/journal.pone.0272460"}, "souza": {"c": "Souza, A. S., &amp; Leal Barbosa, L. C. (2023). Should we turn off the music? Music with lyrics interferes with cognitive tasks. <i>Journal of Cognition, 6</i>(1), 24.", "u": "https://doi.org/10.5334/joc.273"}, "kampfe": {"c": "Kämpfe, J., Sedlmeier, P., &amp; Renkewitz, F. (2011). The impact of background music on adult listeners: A meta-analysis. <i>Psychology of Music, 39</i>(4), 424-448.", "u": "https://doi.org/10.1177/0305735610376261"}, "lesiuk": {"c": "Lesiuk, T. (2005). The effect of music listening on work performance. <i>Psychology of Music, 33</i>(2), 173-191.", "u": "https://doi.org/10.1177/0305735605050650"}, "perham": {"c": "Perham, N., &amp; Vizard, J. (2011). Can preference for background music mediate the irrelevant sound effect? <i>Applied Cognitive Psychology, 25</i>(4), 625-631.", "u": "https://doi.org/10.1002/acp.1731"}, "mrazek": {"c": "Mrazek, M. D., Smallwood, J., &amp; Schooler, J. W. (2012). Mindfulness and mind-wandering: Finding convergence through opposing constructs. <i>Emotion, 12</i>(3), 442-448.", "u": "https://doi.org/10.1037/a0026678"}, "distefano": {"c": "Di Stefano, G., Gino, F., Pisano, G. P., &amp; Staats, B. R. (2016). <i>Making experience count: The role of reflection in individual learning</i> (Harvard Business School Working Paper No. 14-093).", "u": "https://doi.org/10.2139/ssrn.2414478"}};
@@ -492,38 +497,73 @@ const REFS = {"newport": {"c": "Newport, C. (2016). <i>Deep work: Rules for focu
   order.forEach(function(k){var r=REFS[k],li=document.createElement('li');li.id='ref-'+k;li.innerHTML=r.c+(r.u?' <a href="'+r.u+'">'+r.u+'</a>':'');ol.appendChild(li);});
 })();
 (function(){
-  // Sample session card: a copy of the template that fills in and highlights as you read Section 3.
-  var panel=document.getElementById('cardpanel'),src=document.getElementById('session-card');
+  // Example session card: a filled-in copy of the Section 5 template that pops up beside Section 3.
+  // The sentence being read and the card slot it fills are highlighted together.
+  var panel=document.getElementById('cardpanel'),src=document.getElementById('session-card'),page=document.querySelector('.page');
   if(!panel||!src)return;
   var card=src.cloneNode(true);card.removeAttribute('id');
-  card.querySelector('h4').textContent='Sample session card';
-  card.querySelectorAll('[data-f]').forEach(function(f){var ex=document.createElement('div');ex.className='ex';ex.textContent=f.dataset.ex;f.appendChild(ex);});
-  panel.innerHTML='<div class="cp-head"><span class="cp-tag">Fill in now</span><button class="cp-close" type="button" aria-label="Hide sample card">×</button></div>';
+  function hand(t){var h=document.createElement('span');h.className='hand';h.textContent=t;return h;}
+  function fe(){var f=document.createElement('span');f.className='fe';f.textContent='For example:';return f;}
+  card.querySelectorAll('[data-date]').forEach(function(b){b.textContent='';b.appendChild(hand(b.dataset.date));});
+  card.querySelectorAll('.field[data-f]').forEach(function(f){var l=f.querySelector('.line');l.appendChild(fe());l.appendChild(hand(f.dataset.ex));});
+  card.querySelectorAll('p[data-f]').forEach(function(r){
+    var ticks=(r.dataset.tick||'').split(' ');
+    r.querySelectorAll('.box').forEach(function(b){if(ticks.indexOf(b.dataset.v)>=0)b.appendChild(hand('✗'));});
+    r.querySelectorAll('.blank').forEach(function(b){b.textContent='';b.appendChild(hand(r.dataset.min));});
+    r.insertBefore(fe(),r.firstChild);
+  });
+  panel.innerHTML='<div class="cp-head"><div><div class="cp-title">Example session card</div><div class="cp-sub">How a filled-in card might look for one session spent building a login page. The highlighted slot is the one the step you’re reading fills in.</div></div><button class="cp-close" type="button" aria-label="Hide example card">×</button></div><div class="cp-now"></div>';
   panel.appendChild(card);
+  var now=panel.querySelector('.cp-now');
   var fields={};card.querySelectorAll('[data-f]').forEach(function(f){fields[f.dataset.f]=f;});
+  var labels={};src.querySelectorAll('[data-f]').forEach(function(f){var sp=f.querySelector('span:not(.box):not(.blank)');labels[f.dataset.f]=f.matches('p')?'Result line':sp.textContent.replace(/\s*\([^)]*\)\s*$/,'');});
   var triggers=[].slice.call(document.querySelectorAll('[data-card]'));
-  var startEl=document.getElementById('s3'),endEl=document.querySelector('[data-card-end]');
-  var wide=window.matchMedia('(min-width:75rem)'),closed=false,last='';
-  panel.querySelector('.cp-close').addEventListener('click',function(){closed=true;panel.classList.add('gone');});
+  var startEl=document.getElementById('cardstart'),endEl=document.querySelector('[data-card-end]');
+  var closed=false,lastAct=null,force=false;
+  panel.querySelector('.cp-close').addEventListener('click',function(){closed=true;panel.classList.add('gone');document.documentElement.classList.remove('card-open');});
   function keys(el){return el.dataset.card.split(' ').filter(Boolean);}
+  // Where a trigger sits in the manual, e.g. "3.1, step 2".
+  var h3s=[].slice.call(document.querySelectorAll('.page h3'));
+  function where(t){
+    var h=null;h3s.forEach(function(x){if(x.compareDocumentPosition(t)&Node.DOCUMENT_POSITION_FOLLOWING)h=x;});
+    var sec=h?h.textContent.split(' ')[0]:'';
+    if(t.closest('details'))return sec+', “Try this”';
+    var li=t.closest('li');while(li&&li.parentElement.closest('li'))li=li.parentElement.closest('li');
+    if(li&&li.parentElement.tagName==='OL')return sec+', step '+([].indexOf.call(li.parentElement.children,li)+1);
+    return sec;
+  }
+  function hits(t,line){var rs=t.getClientRects();for(var i=0;i<rs.length;i++){if(rs[i].top-6<=line&&rs[i].bottom+6>=line)return true;}return false;}
+  function layout(){
+    var pw=page.offsetWidth,gap=24,need=24*parseFloat(getComputedStyle(document.documentElement).fontSize);
+    var side=window.innerWidth>=pw+need+gap+48;
+    panel.classList.toggle('side',side);panel.classList.toggle('sheet',!side);
+    var gutter=(window.innerWidth-pw)/2;
+    document.documentElement.style.setProperty('--shift',side?Math.max(0,need+gap+16-gutter)+'px':'0px');
+    return side;
+  }
+  var side=layout();
   function update(){
-    var line=window.innerHeight*0.4,act=null,filled={};
+    var line=window.innerHeight*0.45,act=null;
     var inRange=startEl.getBoundingClientRect().top<=line&&endEl.getBoundingClientRect().top>line;
-    triggers.forEach(function(t){var r=t.getBoundingClientRect();if(r.height&&r.top<=line){act=t;keys(t).forEach(function(k){filled[k]=1;});}});
+    if(inRange)triggers.forEach(function(t){if(hits(t,line))act=t;});
     var on=act?keys(act):[];
-    panel.classList.toggle('show',inRange&&!closed);
-    // On small screens the panel only lists the active fields, so hide it when nothing is active.
-    if(!wide.matches&&!on.length)panel.classList.remove('show');
-    var sig=on.join()+'|'+Object.keys(filled).join();
-    if(sig===last)return;last=sig;
-    Object.keys(fields).forEach(function(k){fields[k].classList.toggle('on',on.indexOf(k)>=0);fields[k].classList.toggle('filled',!!filled[k]);});
-    if(on.length&&fields[on[0]]){var f=fields[on[0]],top=f.getBoundingClientRect().top-panel.getBoundingClientRect().top+panel.scrollTop;if(top<panel.scrollTop||top+f.offsetHeight>panel.scrollTop+panel.clientHeight)panel.scrollTop=top-40;}
+    var show=inRange&&!closed&&(side||on.length>0);
+    panel.classList.toggle('show',show);
+    document.documentElement.classList.toggle('card-open',show&&side);
+    if(act===lastAct&&!force)return;
+    force=false;
+    if(lastAct)lastAct.classList.remove('card-on');
+    lastAct=act;
+    if(act&&on.length)act.classList.add('card-on');
+    Object.keys(fields).forEach(function(k){fields[k].classList.toggle('on',on.indexOf(k)>=0);});
+    now.textContent=on.length?'You’re reading '+where(act)+'. On the card: '+on.map(function(k){return '“'+labels[k]+'”';}).join(' and '):'';
+    if(on.length){var f=fields[on[0]],top=f.getBoundingClientRect().top-panel.getBoundingClientRect().top+panel.scrollTop;if(top<panel.scrollTop+90||top+f.offsetHeight>panel.scrollTop+panel.clientHeight)panel.scrollTop=top-110;}
   }
   var queued=false;
   function onScroll(){if(!queued){queued=true;requestAnimationFrame(function(){queued=false;update();});}}
   window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',function(){last='';onScroll();});
-  document.addEventListener('toggle',function(){last='';onScroll();},true);
+  window.addEventListener('resize',function(){side=layout();force=true;onScroll();});
+  document.addEventListener('toggle',function(){force=true;onScroll();},true);
   update();
 })();
 window.addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
