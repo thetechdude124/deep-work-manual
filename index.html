@@ -46,6 +46,44 @@ figure svg{width:100%;height:auto;display:block;margin:0 auto}
 .field .line{border-bottom:1px solid #444;height:1.6rem}
 .tpl td{height:2rem}
 @media (max-width:520px){.field{grid-template-columns:1fr}}
+.field.q{grid-template-columns:1fr;gap:.2rem}
+.field.q .line{height:3.2rem;background:linear-gradient(transparent calc(50% - 1px),#444 calc(50% - 1px),#444 50%,transparent 50%)}
+.tpl-sub{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.78rem;font-weight:bold;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:1.1rem 0 .2rem}
+.cardnote{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.9rem;background:var(--shade);border-left:3px solid var(--hi);padding:.5rem .8rem}
+/* Sample session card that follows Section 3 */
+.cardpanel{display:none}
+.cardpanel .tpl{margin:0;border:0;padding:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.cardpanel .tpl h4{font-size:.95rem;margin:0 0 .2rem}
+.cardpanel .field,.cardpanel .field.q{grid-template-columns:1fr;gap:.1rem;font-size:.8rem;margin:.15rem -.5rem;padding:.3rem .5rem;border-left:3px solid transparent;align-items:start}
+.cardpanel p[data-f]{font-size:.8rem;margin:.15rem -.5rem;padding:.3rem .5rem;border-left:3px solid transparent}
+.cardpanel .field .line{height:1.1rem;background:none}
+.cardpanel .field.q .line{height:1.1rem}
+.cardpanel .ex{display:none;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:.85rem;color:#3a3a3a;line-height:1.35;border-bottom:1px solid #999;padding-bottom:.15rem}
+.cardpanel .filled .ex{display:block}
+.cardpanel .filled .line{display:none}
+.cardpanel .tpl [data-f].on{background:#f6e3da;border-left-color:var(--hi)}
+.cardpanel .tpl [data-f].on .ex{color:#222}
+.cardpanel .tpl-sub{margin:.6rem 0 .1rem;font-size:.68rem}
+.cp-head{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.72rem;color:var(--muted);margin-bottom:.5rem}
+.cp-close{border:0;background:none;color:var(--muted);font-size:1.1rem;line-height:1;cursor:pointer;padding:0 .2rem}
+.cp-tag{color:var(--hi);font-weight:bold;text-transform:uppercase;letter-spacing:.06em}
+@media screen{
+  .cardpanel{display:block;background:var(--page);border:1.5px solid #444;padding:.8rem 1rem;opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility 0s .25s}
+  .cardpanel.show{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s}
+  .cardpanel.gone{display:none}
+}
+@media screen and (min-width:75rem){
+  .layout{display:grid;grid-template-columns:minmax(0,50rem) 20rem;gap:1.5rem;justify-content:center;align-items:start}
+  .layout>.page{margin:2rem 0}
+  .cardpanel{position:sticky;top:1rem;margin-top:2rem;max-height:calc(100vh - 2rem);overflow-y:auto;transform:translateX(1rem)}
+  .cp-close{display:none}
+}
+@media screen and (max-width:74.99rem){
+  .cardpanel{position:fixed;left:50%;bottom:0;width:min(50rem,calc(100% - 32px));transform:translate(-50%,1rem);max-height:42vh;overflow-y:auto;border-bottom:0;box-shadow:0 -4px 16px rgba(0,0,0,.12);z-index:5}
+  .cardpanel.show{transform:translate(-50%,0)}
+  .cardpanel .tpl h4,.cardpanel .tpl-sub,.cardpanel .tpl>:not(.on){display:none}
+}
+@media (prefers-reduced-motion:reduce){.cardpanel,.cardpanel.show{transition:none}}
 .refs{font-size:.88rem;line-height:1.45}
 .refs li{margin:.5rem 0;overflow-wrap:anywhere}
 details.opt,details.why{margin:.8rem 0;border:1px solid var(--rule);background:var(--shade);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.92rem;line-height:1.5}
@@ -61,12 +99,17 @@ details>.body>:first-child{margin-top:.2rem}
   .page{border:0;margin:0;padding:0;max-width:none}
   h2,h3{break-after:avoid}
   .pb{break-before:page}
+  .cardpanel,.cardnote{display:none}
+  #session-card{break-before:page}
+  #session-card .field{margin:.35rem 0}
+  #session-card .field.q .line{height:2.8rem}
   a{text-decoration:none;color:inherit}
 }
 </style>
 </head>
 <body>
 
+<div class="layout">
 <div class="page">
 <h1>Deep Work for Open-Ended Projects</h1>
 <p class="subtitle">An instruction manual for college students</p>
@@ -219,17 +262,18 @@ details>.body>:first-child{margin-top:.2rem}
 <p class="rule">Rule of thumb: write down the minimum goal and the first action before you start, and stop at 90 minutes.</p>
 
 <h3>3.1 Pre-session: Defining core targets for session and deliverables</h3>
+<p class="cardnote">As you read this section, the sample session card on the right (at the bottom on a phone) highlights the part each step asks you to fill in and shows an example answer.</p>
 <ol>
-  <li>In section 1, we broke down the overarching project objectives into a series of weekly and daily objectives. Now, based on that, take the daily objective you planned, and take the first component of said objective. This should be moderately sized, something that is reasonably achievable in 1-2 hours at most. Use this as your session goal.
+  <li data-card="goal why">In section 1, we broke down the overarching project objectives into a series of weekly and daily objectives. Now, based on that, take the daily objective you planned, and take the first component of said objective. This should be moderately sized, something that is reasonably achievable in 1-2 hours at most. Use this as your session goal, and write one line on why this piece matters to the larger project.
     <details class="opt"><summary>Try this</summary><div class="body"><p class="note"><b>Note:</b> If 1-2 hours is more than you can focus for right now, pick a smaller piece and split the session into shorter blocks (for example 25-minute Pomodoro blocks with 5-minute breaks). Section 3.3 explains how to pick your length.</p></div></details></li>
-  <li>Set both a minimum and stretch goal. Based on the session goal you chose in the previous section, think about the most rudimentary, realistic version of said goal you could achieve in the first 10-20 minutes (that, if completed, would still move you forward). Label this the minimum session goal, and the full 1-2 hour objective as the stretch goal.
-    <ul class="warnings"><li><strong>Warning: The stretch goal is optional. Missing it does not mean you missed your minimum goal.</strong></li></ul></li>
-  <li>Write both the minimum and maximum goals on the same medium you chose to use as described in section 1 for organization purposes. Place it in a location where it is constantly visible. This will be useful for staying on task in section 3.3. (The session card at the end of this manual has a slot for each.)</li>
+  <li data-card="min stretch">Set both a minimum and stretch goal. Based on the session goal you chose in the previous section, think about the most rudimentary, realistic version of said goal you could achieve in the first 10-20 minutes (that, if completed, would still move you forward). Label this the minimum session goal, and the full 1-2 hour objective as the stretch goal.
+    <ul class="warnings" data-card="stretch"><li><strong>Warning: The stretch goal is optional. Missing it does not mean you missed your minimum goal.</strong></li></ul></li>
+  <li data-card="min stretch">Write both the minimum and maximum goals on the same medium you chose to use as described in section 1 for organization purposes. Place it in a location where it is constantly visible. This will be useful for staying on task in section 3.3. (The session card at the end of this manual has a slot for each.)</li>
 </ol>
-<details class="opt"><summary>Try this</summary><div class="body"><p><b>For those who find it hard to start working:</b> write down the first concrete action that you can take to achieve your minimum goal. This will make the process have substantially less friction and make it easier for you to get started.</p><details class="why"><summary>Why this works</summary><div class="body"><p>deciding in advance exactly when and how you’ll act (an “implementation intention”) had a medium-to-large effect on actually reaching goals across 94 studies, and it helps most with getting started.<sup class="c" data-k="gollwitzer"></sup><sup class="c" data-k="gollsheeran"></sup></p></div></details></div></details>
+<details class="opt" data-card="action"><summary>Try this</summary><div class="body"><p><b>For those who find it hard to start working:</b> write down the first concrete action that you can take to achieve your minimum goal. This will make the process have substantially less friction and make it easier for you to get started.</p><details class="why"><summary>Why this works</summary><div class="body"><p>deciding in advance exactly when and how you’ll act (an “implementation intention”) had a medium-to-large effect on actually reaching goals across 94 studies, and it helps most with getting started.<sup class="c" data-k="gollwitzer"></sup><sup class="c" data-k="gollsheeran"></sup></p></div></details></div></details>
 <details class="why"><summary>Why this works</summary><div class="body"><p>Students who took fixed Pomodoro-style breaks reported less fatigue and distraction, and more concentration and motivation, than students who took breaks whenever they felt like it.<sup class="c" data-k="biwer"></sup></p><p><sup class="c" data-k="scott"></sup><sup class="c" data-k="bandura"></sup></p></div></details>
 
-<h3>3.2 Environmental optimization: setting up your desk and local surroundings for maximum productivity</h3>
+<h3 data-card="setup">3.2 Environmental optimization: setting up your desk and local surroundings for maximum productivity</h3>
 <details class="opt"><summary>Side note</summary><div class="body"><p>Note: different individuals suit different working environments, and the following advice may not universally apply to all who are reading these instructions. These are evidence-based best practices for productivity that tend to allow people to focus better and in a healthier manner, so treat them as mini-experiments that you can run and decide to adopt. Feel free to discard advice if you find it personally hampers your productivity.</p></div></details>
 <ul>
   <li>Find a quiet place to begin your work session, one that has sufficiently low volume so that you’re not actively disturbed or distracted. If you can’t find such a location, try using noise-cancelling headphones or earbuds to mute some of the noise.
@@ -301,27 +345,27 @@ details>.body>:first-child{margin-top:.2rem}
 
 <h3>3.3 In-session: maintaining focus, handling getting stuck, dealing with distractions that occur</h3>
 <ol>
-  <li>First, decide on an optimal working duration for the session. This will be highly dependent on your prior continuous work capacity. For instance, if you struggle to focus even 25 minutes at a time, it is unwise to attempt a session for 1-2 hours continuously. Therefore, we advise the following. Take the longest consecutive time you’ve been able to consecutively focus (that’s still less than 90 minutes), and try and sit for that duration of time.
+  <li data-card="length">First, decide on an optimal working duration for the session. This will be highly dependent on your prior continuous work capacity. For instance, if you struggle to focus even 25 minutes at a time, it is unwise to attempt a session for 1-2 hours continuously. Therefore, we advise the following. Take the longest consecutive time you’ve been able to consecutively focus (that’s still less than 90 minutes), and try and sit for that duration of time.
     <ul>
       <li><b>We recommend capping the session at 90 minutes</b> due to various research (linked below) that suggest human focus cycles can follow roughly 90 minute cycles, and empirical work suggests stopping sessions around this length.</li>
       <li>that demonstrates that human focus cycles tend to occur in 90 minute bouts, synced with ultradian cycles. For this reason, if you are attempting a longer session (e.g. 3 hours), we recommend you divide it into at most 90 minute chunks (feel free to make the duration low if you feel that you are unable to focus for that long), and then take short 10-20 minute breaks between each.</li>
     </ul></li>
-  <li>Make sure that your notes with the minimum and stretch goals from section 3.1 is in front of you and visible. If you wrote down the immediate next step that you will take, read that again as well.</li>
+  <li data-card="min stretch action">Make sure that your notes with the minimum and stretch goals from section 3.1 is in front of you and visible. If you wrote down the immediate next step that you will take, read that again as well.</li>
   <li>Now, begin the work session with the task that’s written down. Ideally this should be with no music, or minimal non-distracting, non-lyrical music that will not drag your attention to it.
     <details class="opt"><summary>Side note</summary><div class="body"><p class="note"><b>Note:</b> if music is the thing that gets you to sit down at all, use it. A session with music beats no session. Try it both ways and compare your logs in Section 4.</p></div></details></li>
-  <li>If you begin to feel distracted and urges that wish to pull you away from the work, take a second to close your eyes and take a full inhale and long, slow exhale. Then open your eyes and return to work.</li>
-  <li>If you get stuck on a problem, don’t leave the session. Write down exactly where you’re stuck in one sentence, then drop to your minimum goal from Section 3.1 or to a different piece of the same task. Come back to the stuck part at the start of your next session.
+  <li data-card="pull">If you begin to feel distracted and urges that wish to pull you away from the work, take a second to close your eyes and take a full inhale and long, slow exhale. Then open your eyes and return to work. Before the session, write down on your session card what is most likely to pull you away and what you’ll do when it happens.</li>
+  <li data-card="stuck">If you get stuck on a problem, don’t leave the session. Write down exactly where you’re stuck in one sentence (there’s a slot for it on the session card), then drop to your minimum goal from Section 3.1 or to a different piece of the same task. Come back to the stuck part at the start of your next session.
     <ul class="warnings"><li><strong>Warning: “Don’t leave the session” means don’t abandon the task just because you are stuck; it does not mean skipping your scheduled breaks.</strong></li></ul></li>
-  <li>Keep going until the session is done!
+  <li data-card="">Keep going until the session is done!
     <ul><li>If your session consists of multiple work blocks of &lt;= 90 minutes, at the end of each, take a small break for 10-20 minutes. Make sure this break is timed so that it doesn’t bleed into the next session and try and let your mind actively rest. Then, return to work.</li></ul></li>
 </ol>
 <details class="why"><summary>Why this works</summary><div class="body"><p><sup class="c" data-k="kleitman"></sup><sup class="c" data-k="ericsson"></sup><sup class="c" data-k="albulescu"></sup></p><p>(evidence, linked below, shows that music with lyrics tends to hurt productivity while instrumental music can have neutral/slightly negative effects for very demanding tasks).<sup class="c" data-k="souza"></sup><sup class="c" data-k="kampfe"></sup></p><p>Software developers who picked their own music reported better mood and produced better work than without music,<sup class="c" data-k="lesiuk"></sup> though music you like still hurts memory-heavy work like memorizing or close reading.<sup class="c" data-k="perham"></sup></p><p>Evidence (linked below) shows that mindful breathing can help reduce mind-wandering symptoms as opposed to pure relaxation.<sup class="c" data-k="mrazek"></sup></p></div></details>
 
 <h3>3.4 Post-session: taking good breaks, recording task completion</h3>
 <ol>
-  <li>Now that the session is over, reflect on what went well and didn’t go well. Was the work session effective? Did you find yourself able to achieve flow state (see the definition at the start of this manual)? Were you distracted by tasks, thoughts, people, etc throughout? If so, what were the greatest sources of distraction?</li>
-  <li>Based on this, see if there’s any variable you’d change before beginning your next work session. Productivity and deep work is an experiment, and you likely won’t arrive at the most optimal configuration for you the first time!</li>
-  <li>Write your answers on the session card before you get up, then log the result as described in Section 4.2.</li>
+  <li data-card="result well distraction learned feel">Now that the session is over, reflect on what went well and didn’t go well. Was the work session effective? Did you find yourself able to achieve flow state (see the definition at the start of this manual)? When did time fly, and when did it drag? Were you distracted by tasks, thoughts, people, etc throughout? If so, what were the greatest sources of distraction? What do you understand now that you didn’t at the start (your learning goal from Section 1.4)?</li>
+  <li data-card="change">Based on this, see if there’s any variable you’d change before beginning your next work session. Productivity and deep work is an experiment, and you likely won’t arrive at the most optimal configuration for you the first time!</li>
+  <li data-card="next">Write your answers on the session card before you get up, including where you’ll pick up next session, then log the result as described in Section 4.2.</li>
 </ol>
 <details class="why"><summary>Sources</summary><div class="body"><p><sup class="c" data-k="distefano"></sup></p></div></details>
 
@@ -333,13 +377,13 @@ details>.body>:first-child{margin-top:.2rem}
 
 <h3>4.1 Define one measurable output before you begin every work session</h3>
 <ol>
-  <li>Your minimum goal from Section 3.1 is this output. Write it so that someone else could check whether you did it.</li>
+  <li data-card="min">Your minimum goal from Section 3.1 is this output. Write it so that someone else could check whether you did it.</li>
   <li>For creative or exploratory work (a novel, a painting, open research), you often can’t know the output in advance. Make the measurable output about the process instead: “write 500 words,” “45 minutes of freewriting on chapter 3,” “3 color studies,” or “try 2 approaches to the proof.” You’re checking that the session happened and produced something, not that it produced the right thing.</li>
 </ol>
 
 <h3>4.2 Track your results immediately after every work session</h3>
 <ol>
-  <li>Before you get up, log five things: the date, your planned output, the result (done, partial, or not done), minutes of actual focused work, and one line on what helped or hurt.</li>
+  <li data-card="result">Before you get up, log five things: the date, your planned output, the result (done, partial, or not done), minutes of actual focused work, and one line on what helped or hurt.</li>
   <li>Keep notes to one line. A log that’s too tedious to fill out will stop getting filled out.</li>
 </ol>
 <div class="tw">
@@ -355,7 +399,7 @@ details>.body>:first-child{margin-top:.2rem}
 </div>
 <details class="why"><summary>Why this works</summary><div class="body"><p>Across 138 studies, monitoring progress toward a goal made people more likely to reach it, and the effect was larger when progress was physically written down or reported to someone.<sup class="c" data-k="harkin"></sup></p></div></details>
 
-<h3>4.3 Take your collected results weekly and compare it to your initial estimate from part 1, diagnose your gaps</h3>
+<h3 data-card-end>4.3 Take your collected results weekly and compare it to your initial estimate from part 1, diagnose your gaps</h3>
 <ol>
   <li>At your weekly checkpoint (Section 2.3), count how many sessions hit at least their minimum goal and divide by the sessions you planned. Write that completion rate down each week. One week alone is noise, so look at the trend over 3 to 4 weeks.</li>
   <li>Compare what you finished to the timeframe you set in Section 1.2. Are you ahead, on track, or behind?</li>
@@ -393,16 +437,27 @@ details>.body>:first-child{margin-top:.2rem}
   <div class="field"><span>Buffer block</span><div class="line"></div></div>
 </div>
 
-<div class="tpl">
+<div class="tpl" id="session-card">
   <h4>Session Card (date ____________)</h4>
-  <div class="field"><span>Session goal (3.1)</span><div class="line"></div></div>
-  <div class="field"><span>Minimum goal (first 10-20 min)</span><div class="line"></div></div>
-  <div class="field"><span>Stretch goal</span><div class="line"></div></div>
-  <div class="field"><span>First concrete action</span><div class="line"></div></div>
-  <div class="field"><span>Planned length (90 min max)</span><div class="line"></div></div>
-  <p>Result: ☐ Done &nbsp; ☐ Partial &nbsp; ☐ Not done &nbsp;&nbsp;&nbsp; Focused minutes: ______ &nbsp;&nbsp;&nbsp; Reached flow? ☐ Yes &nbsp; ☐ No</p>
-  <div class="field"><span>Biggest distraction</span><div class="line"></div></div>
-  <div class="field"><span>One thing to change next time</span><div class="line"></div></div>
+  <p class="tpl-sub">Before you start (3.1 to 3.3)</p>
+  <div class="field" data-f="goal" data-ex="Get the login form sending the email and password to the server"><span>Session goal (3.1)</span><div class="line"></div></div>
+  <div class="field q" data-f="why" data-ex="This week’s outcome goal is a working login page, and nothing else in the app works without it."><span>Why does this session matter to the bigger project?</span><div class="line"></div></div>
+  <div class="field" data-f="min" data-ex="Form submits and I can see the request in the server logs"><span>Minimum goal (first 10-20 min)</span><div class="line"></div></div>
+  <div class="field" data-f="stretch" data-ex="A wrong password shows an error and a right one goes to the home page"><span>Stretch goal</span><div class="line"></div></div>
+  <div class="field" data-f="action" data-ex="Open login.js and add a submit handler that prints the form values"><span>First concrete action</span><div class="line"></div></div>
+  <div class="field" data-f="setup" data-ex="Desk at home, laptop on two textbooks, phone in the kitchen"><span>Where I’m working and what I set up (3.2)</span><div class="line"></div></div>
+  <div class="field" data-f="length" data-ex="60 minutes, one block"><span>Planned length (90 min max)</span><div class="line"></div></div>
+  <div class="field q" data-f="pull" data-ex="YouTube while the server restarts. If I reach for it, one slow breath and back to the code."><span>What is most likely to pull me away, and what will I do when it does?</span><div class="line"></div></div>
+  <p class="tpl-sub">During the session (3.3)</p>
+  <div class="field q" data-f="stuck" data-ex="The server gets the request, but the password field is always empty."><span>If I got stuck: where, in one sentence?</span><div class="line"></div></div>
+  <p class="tpl-sub">After the session (3.4)</p>
+  <p data-f="result" data-ex="Partial, 55 focused minutes, no flow">Result: ☐ Done &nbsp; ☐ Partial &nbsp; ☐ Not done &nbsp;&nbsp;&nbsp; Focused minutes: ______ &nbsp;&nbsp;&nbsp; Reached flow? ☐ Yes &nbsp; ☐ No</p>
+  <div class="field q" data-f="well" data-ex="The form was sending requests within 20 minutes because I started with my first action instead of rereading tutorials."><span>What went well, and why?</span><div class="line"></div></div>
+  <div class="field" data-f="distraction" data-ex="Opened YouTube twice while waiting on the server"><span>Biggest distraction</span><div class="line"></div></div>
+  <div class="field q" data-f="feel" data-ex="The first half hour flew. It dragged once I hit the empty password bug."><span>When did time fly, and when did it drag?</span><div class="line"></div></div>
+  <div class="field q" data-f="learned" data-ex="The server can’t read form data until the request body is parsed."><span>What do I understand now that I didn’t at the start?</span><div class="line"></div></div>
+  <div class="field" data-f="change" data-ex="Close YouTube before I start, not just put my phone away"><span>One thing to change next time</span><div class="line"></div></div>
+  <div class="field q" data-f="next" data-ex="Add body parsing, then retest the empty password bug."><span>Where will I start next session?</span><div class="line"></div></div>
 </div>
 
 <div class="tpl">
@@ -416,6 +471,8 @@ details>.body>:first-child{margin-top:.2rem}
 
 <h2 id="refs" class="pb">References</h2>
 <ol class="refs" id="reflist"></ol>
+</div>
+<aside class="cardpanel" id="cardpanel" aria-label="Sample session card"></aside>
 </div>
 
 <script>
@@ -433,6 +490,41 @@ const REFS = {"newport": {"c": "Newport, C. (2016). <i>Deep work: Rules for focu
   });
   var ol=document.getElementById('reflist');
   order.forEach(function(k){var r=REFS[k],li=document.createElement('li');li.id='ref-'+k;li.innerHTML=r.c+(r.u?' <a href="'+r.u+'">'+r.u+'</a>':'');ol.appendChild(li);});
+})();
+(function(){
+  // Sample session card: a copy of the template that fills in and highlights as you read Section 3.
+  var panel=document.getElementById('cardpanel'),src=document.getElementById('session-card');
+  if(!panel||!src)return;
+  var card=src.cloneNode(true);card.removeAttribute('id');
+  card.querySelector('h4').textContent='Sample session card';
+  card.querySelectorAll('[data-f]').forEach(function(f){var ex=document.createElement('div');ex.className='ex';ex.textContent=f.dataset.ex;f.appendChild(ex);});
+  panel.innerHTML='<div class="cp-head"><span class="cp-tag">Fill in now</span><button class="cp-close" type="button" aria-label="Hide sample card">×</button></div>';
+  panel.appendChild(card);
+  var fields={};card.querySelectorAll('[data-f]').forEach(function(f){fields[f.dataset.f]=f;});
+  var triggers=[].slice.call(document.querySelectorAll('[data-card]'));
+  var startEl=document.getElementById('s3'),endEl=document.querySelector('[data-card-end]');
+  var wide=window.matchMedia('(min-width:75rem)'),closed=false,last='';
+  panel.querySelector('.cp-close').addEventListener('click',function(){closed=true;panel.classList.add('gone');});
+  function keys(el){return el.dataset.card.split(' ').filter(Boolean);}
+  function update(){
+    var line=window.innerHeight*0.4,act=null,filled={};
+    var inRange=startEl.getBoundingClientRect().top<=line&&endEl.getBoundingClientRect().top>line;
+    triggers.forEach(function(t){var r=t.getBoundingClientRect();if(r.height&&r.top<=line){act=t;keys(t).forEach(function(k){filled[k]=1;});}});
+    var on=act?keys(act):[];
+    panel.classList.toggle('show',inRange&&!closed);
+    // On small screens the panel only lists the active fields, so hide it when nothing is active.
+    if(!wide.matches&&!on.length)panel.classList.remove('show');
+    var sig=on.join()+'|'+Object.keys(filled).join();
+    if(sig===last)return;last=sig;
+    Object.keys(fields).forEach(function(k){fields[k].classList.toggle('on',on.indexOf(k)>=0);fields[k].classList.toggle('filled',!!filled[k]);});
+    if(on.length&&fields[on[0]]){var f=fields[on[0]],top=f.getBoundingClientRect().top-panel.getBoundingClientRect().top+panel.scrollTop;if(top<panel.scrollTop||top+f.offsetHeight>panel.scrollTop+panel.clientHeight)panel.scrollTop=top-40;}
+  }
+  var queued=false;
+  function onScroll(){if(!queued){queued=true;requestAnimationFrame(function(){queued=false;update();});}}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',function(){last='';onScroll();});
+  document.addEventListener('toggle',function(){last='';onScroll();},true);
+  update();
 })();
 window.addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
 </script>
