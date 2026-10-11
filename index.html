@@ -87,6 +87,11 @@ figure svg{width:100%;height:auto;display:block;margin:0 auto}
   .cardpanel .box{position:relative}
   .cardpanel .box .hand{position:absolute;left:-.05rem;top:-.35rem;font-size:1.25rem}
   .cardpanel .blank .hand{display:inline-block;min-width:2.4rem;border-bottom:1px solid #444;text-align:center}
+  .cardpanel [data-f]:not(.filled) .fe{visibility:hidden}
+  .hand .r{visibility:hidden}
+  .cp-link{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:6;overflow:visible}
+  .cp-link path{fill:none;stroke:var(--hi);stroke-width:1.5}
+  .cp-link circle{fill:var(--hi)}
   .cardpanel.sheet .tpl{border:0;padding:0}
   .cardpanel.sheet .tpl>:not(.on){display:none}
 }
@@ -106,7 +111,7 @@ details>.body>:first-child{margin-top:.2rem}
   .page{border:0;margin:0;padding:0;max-width:none}
   h2,h3{break-after:avoid}
   .pb{break-before:page}
-  .cardpanel,.cardnote{display:none}
+  .cardpanel,.cardnote,.cp-link{display:none}
   #session-card{break-before:page}
   #session-card .field{margin:.35rem 0}
   #session-card .field.q .line{height:2.8rem}
@@ -272,9 +277,9 @@ details>.body>:first-child{margin-top:.2rem}
 <ol>
   <li>In section 1, we broke down the overarching project objectives into a series of weekly and daily objectives. Now, based on that, take the daily objective you planned, and take the first component of said objective. This should be moderately sized, something that is reasonably achievable in 1-2 hours at most. <span data-card="goal">Use this as your session goal,</span> <span data-card="why">and write one line on why this piece matters to the larger project.</span>
     <details class="opt"><summary>Try this</summary><div class="body"><p class="note"><b>Note:</b> If 1-2 hours is more than you can focus for right now, pick a smaller piece and split the session into shorter blocks (for example 25-minute Pomodoro blocks with 5-minute breaks). Section 3.3 explains how to pick your length.</p></div></details></li>
-  <li><span data-card="min stretch">Set both a minimum and stretch goal.</span> <span data-card="min">Based on the session goal you chose in the previous section, think about the most rudimentary, realistic version of said goal you could achieve in the first 10-20 minutes (that, if completed, would still move you forward). Label this the minimum session goal,</span> <span data-card="stretch">and the full 1-2 hour objective as the stretch goal.</span>
+  <li>Set both a minimum and stretch goal. <span data-card="min">Based on the session goal you chose in the previous section, think about the most rudimentary, realistic version of said goal you could achieve in the first 10-20 minutes (that, if completed, would still move you forward). Label this the minimum session goal,</span> <span data-card="stretch">and the full 1-2 hour objective as the stretch goal.</span>
     <ul class="warnings" data-card="stretch"><li><strong>Warning: The stretch goal is optional. Missing it does not mean you missed your minimum goal.</strong></li></ul></li>
-  <li data-card="min stretch">Write both the minimum and maximum goals on the same medium you chose to use as described in section 1 for organization purposes. Place it in a location where it is constantly visible. This will be useful for staying on task in section 3.3. (The session card at the end of this manual has a slot for each.)</li>
+  <li>Write both the minimum and maximum goals on the same medium you chose to use as described in section 1 for organization purposes. Place it in a location where it is constantly visible. This will be useful for staying on task in section 3.3. (The session card at the end of this manual has a slot for each.)</li>
 </ol>
 <details class="opt" data-card="action"><summary>Try this</summary><div class="body"><p><b>For those who find it hard to start working:</b> write down the first concrete action that you can take to achieve your minimum goal. This will make the process have substantially less friction and make it easier for you to get started.</p><details class="why"><summary>Why this works</summary><div class="body"><p>deciding in advance exactly when and how you’ll act (an “implementation intention”) had a medium-to-large effect on actually reaching goals across 94 studies, and it helps most with getting started.<sup class="c" data-k="gollwitzer"></sup><sup class="c" data-k="gollsheeran"></sup></p></div></details></div></details>
 <details class="why"><summary>Why this works</summary><div class="body"><p>Students who took fixed Pomodoro-style breaks reported less fatigue and distraction, and more concentration and motivation, than students who took breaks whenever they felt like it.<sup class="c" data-k="biwer"></sup></p><p><sup class="c" data-k="scott"></sup><sup class="c" data-k="bandura"></sup></p></div></details>
@@ -356,13 +361,13 @@ details>.body>:first-child{margin-top:.2rem}
       <li><b>We recommend capping the session at 90 minutes</b> due to various research (linked below) that suggest human focus cycles can follow roughly 90 minute cycles, and empirical work suggests stopping sessions around this length.</li>
       <li>that demonstrates that human focus cycles tend to occur in 90 minute bouts, synced with ultradian cycles. For this reason, if you are attempting a longer session (e.g. 3 hours), we recommend you divide it into at most 90 minute chunks (feel free to make the duration low if you feel that you are unable to focus for that long), and then take short 10-20 minute breaks between each.</li>
     </ul></li>
-  <li data-card="min stretch action">Make sure that your notes with the minimum and stretch goals from section 3.1 is in front of you and visible. If you wrote down the immediate next step that you will take, read that again as well.</li>
+  <li>Make sure that your notes with the minimum and stretch goals from section 3.1 is in front of you and visible. If you wrote down the immediate next step that you will take, read that again as well.</li>
   <li>Now, begin the work session with the task that’s written down. Ideally this should be with no music, or minimal non-distracting, non-lyrical music that will not drag your attention to it.
     <details class="opt"><summary>Side note</summary><div class="body"><p class="note"><b>Note:</b> if music is the thing that gets you to sit down at all, use it. A session with music beats no session. Try it both ways and compare your logs in Section 4.</p></div></details></li>
   <li data-card="pull">If you begin to feel distracted and urges that wish to pull you away from the work, take a second to close your eyes and take a full inhale and long, slow exhale. Then open your eyes and return to work. Before the session, write down on your session card what is most likely to pull you away and what you’ll do when it happens.</li>
   <li data-card="stuck">If you get stuck on a problem, don’t leave the session. Write down exactly where you’re stuck in one sentence (there’s a slot for it on the session card), then drop to your minimum goal from Section 3.1 or to a different piece of the same task. Come back to the stuck part at the start of your next session.
     <ul class="warnings"><li><strong>Warning: “Don’t leave the session” means don’t abandon the task just because you are stuck; it does not mean skipping your scheduled breaks.</strong></li></ul></li>
-  <li data-card="">Keep going until the session is done!
+  <li>Keep going until the session is done!
     <ul><li>If your session consists of multiple work blocks of &lt;= 90 minutes, at the end of each, take a small break for 10-20 minutes. Make sure this break is timed so that it doesn’t bleed into the next session and try and let your mind actively rest. Then, return to work.</li></ul></li>
 </ol>
 <details class="why"><summary>Why this works</summary><div class="body"><p><sup class="c" data-k="kleitman"></sup><sup class="c" data-k="ericsson"></sup><sup class="c" data-k="albulescu"></sup></p><p>(evidence, linked below, shows that music with lyrics tends to hurt productivity while instrumental music can have neutral/slightly negative effects for very demanding tasks).<sup class="c" data-k="souza"></sup><sup class="c" data-k="kampfe"></sup></p><p>Software developers who picked their own music reported better mood and produced better work than without music,<sup class="c" data-k="lesiuk"></sup> though music you like still hurts memory-heavy work like memorizing or close reading.<sup class="c" data-k="perham"></sup></p><p>Evidence (linked below) shows that mindful breathing can help reduce mind-wandering symptoms as opposed to pure relaxation.<sup class="c" data-k="mrazek"></sup></p></div></details>
@@ -383,13 +388,13 @@ details>.body>:first-child{margin-top:.2rem}
 
 <h3>4.1 Define one measurable output before you begin every work session</h3>
 <ol>
-  <li data-card="min">Your minimum goal from Section 3.1 is this output. Write it so that someone else could check whether you did it.</li>
+  <li>Your minimum goal from Section 3.1 is this output. Write it so that someone else could check whether you did it.</li>
   <li>For creative or exploratory work (a novel, a painting, open research), you often can’t know the output in advance. Make the measurable output about the process instead: “write 500 words,” “45 minutes of freewriting on chapter 3,” “3 color studies,” or “try 2 approaches to the proof.” You’re checking that the session happened and produced something, not that it produced the right thing.</li>
 </ol>
 
 <h3>4.2 Track your results immediately after every work session</h3>
 <ol>
-  <li data-card="result">Before you get up, log five things: the date, your planned output, the result (done, partial, or not done), minutes of actual focused work, and one line on what helped or hurt.</li>
+  <li>Before you get up, log five things: the date, your planned output, the result (done, partial, or not done), minutes of actual focused work, and one line on what helped or hurt.</li>
   <li>Keep notes to one line. A log that’s too tedious to fill out will stop getting filled out.</li>
 </ol>
 <div class="tw">
@@ -457,10 +462,10 @@ details>.body>:first-child{margin-top:.2rem}
   <p class="tpl-sub">During the session (3.3)</p>
   <div class="field q" data-f="stuck" data-ex="The server gets the request, but the password field is always empty."><span>If I got stuck: where, in one sentence?</span><div class="line"></div></div>
   <p class="tpl-sub">After the session (3.4)</p>
-  <p data-f="result" data-tick="partial no" data-min="85">Result: <span class="box" data-v="done">☐</span> Done &nbsp; <span class="box" data-v="partial">☐</span> Partial &nbsp; <span class="box" data-v="notdone">☐</span> Not done &nbsp;&nbsp;&nbsp; Focused minutes: <span class="blank">______</span> &nbsp;&nbsp;&nbsp; Reached flow? <span class="box" data-v="yes">☐</span> Yes &nbsp; <span class="box" data-v="no">☐</span> No</p>
   <div class="field q" data-f="well" data-ex="The form was sending requests within 20 minutes because I started with my first action instead of rereading tutorials."><span>What went well, and why?</span><div class="line"></div></div>
-  <div class="field" data-f="distraction" data-ex="Opened YouTube twice while waiting on the server"><span>Biggest distraction</span><div class="line"></div></div>
+  <p data-f="result" data-tick="partial no" data-min="85">Result: <span class="box" data-v="done">☐</span> Done &nbsp; <span class="box" data-v="partial">☐</span> Partial &nbsp; <span class="box" data-v="notdone">☐</span> Not done &nbsp;&nbsp;&nbsp; Focused minutes: <span class="blank">______</span> &nbsp;&nbsp;&nbsp; Reached flow? <span class="box" data-v="yes">☐</span> Yes &nbsp; <span class="box" data-v="no">☐</span> No</p>
   <div class="field q" data-f="feel" data-ex="The first half hour flew. It dragged once I hit the empty password bug."><span>When did time fly, and when did it drag?</span><div class="line"></div></div>
+  <div class="field" data-f="distraction" data-ex="Opened YouTube twice while waiting on the server"><span>Biggest distraction</span><div class="line"></div></div>
   <div class="field q" data-f="learned" data-ex="The server can’t read form data until the request body is parsed."><span>What do I understand now that I didn’t at the start?</span><div class="line"></div></div>
   <div class="field" data-f="change" data-ex="Close YouTube before I start, not just put my phone away"><span>One thing to change next time</span><div class="line"></div></div>
   <div class="field q" data-f="next" data-ex="Add body parsing, then retest the empty password bug."><span>Where will I start next session?</span><div class="line"></div></div>
@@ -497,33 +502,55 @@ const REFS = {"newport": {"c": "Newport, C. (2016). <i>Deep work: Rules for focu
   order.forEach(function(k){var r=REFS[k],li=document.createElement('li');li.id='ref-'+k;li.innerHTML=r.c+(r.u?' <a href="'+r.u+'">'+r.u+'</a>':'');ol.appendChild(li);});
 })();
 (function(){
-  // Example session card: a filled-in copy of the Section 5 template that pops up beside Section 3.
-  // The sentence being read and the card slot it fills are highlighted together.
+  // Example session card: a copy of the Section 5 template that pops up beside Section 3 and gets
+  // written in slot by slot as the reader reaches each instruction. The sentence being read is
+  // highlighted and joined to its slot by a line.
   var panel=document.getElementById('cardpanel'),src=document.getElementById('session-card'),page=document.querySelector('.page');
   if(!panel||!src)return;
+  var still=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   var card=src.cloneNode(true);card.removeAttribute('id');
-  function hand(t){var h=document.createElement('span');h.className='hand';h.textContent=t;return h;}
+  function hand(t){var h=document.createElement('span');h.className='hand';h.dataset.t=t;return h;}
   function fe(){var f=document.createElement('span');f.className='fe';f.textContent='For example:';return f;}
+  var head=card.querySelector('h4');head.dataset.f='_date';
   card.querySelectorAll('[data-date]').forEach(function(b){b.textContent='';b.appendChild(hand(b.dataset.date));});
   card.querySelectorAll('.field[data-f]').forEach(function(f){var l=f.querySelector('.line');l.appendChild(fe());l.appendChild(hand(f.dataset.ex));});
   card.querySelectorAll('p[data-f]').forEach(function(r){
     var ticks=(r.dataset.tick||'').split(' ');
+    r.insertBefore(fe(),r.firstChild);
     r.querySelectorAll('.box').forEach(function(b){if(ticks.indexOf(b.dataset.v)>=0)b.appendChild(hand('✗'));});
     r.querySelectorAll('.blank').forEach(function(b){b.textContent='';b.appendChild(hand(r.dataset.min));});
-    r.insertBefore(fe(),r.firstChild);
   });
-  panel.innerHTML='<div class="cp-head"><div><div class="cp-title">Example session card</div><div class="cp-sub">How a filled-in card might look for one session spent building a login page. The highlighted slot is the one the step you’re reading fills in.</div></div><button class="cp-close" type="button" aria-label="Hide example card">×</button></div><div class="cp-now"></div>';
+  panel.innerHTML='<div class="cp-head"><div><div class="cp-title">Example session card</div><div class="cp-sub">How one student might fill in a card for a session spent building a login page. Each slot gets written in when you reach the step for it.</div></div><button class="cp-close" type="button" aria-label="Hide example card">×</button></div><div class="cp-now"></div>';
   panel.appendChild(card);
   var now=panel.querySelector('.cp-now');
   var fields={};card.querySelectorAll('[data-f]').forEach(function(f){fields[f.dataset.f]=f;});
-  var labels={};src.querySelectorAll('[data-f]').forEach(function(f){var sp=f.querySelector('span:not(.box):not(.blank)');labels[f.dataset.f]=f.matches('p')?'Result line':sp.textContent.replace(/\s*\([^)]*\)\s*$/,'');});
+  var labels={};src.querySelectorAll('[data-f]').forEach(function(f){labels[f.dataset.f]=f.matches('p')?'Result line':f.querySelector('span').textContent.replace(/\s*\([^)]*\)\s*$/,'');});
+  var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','cp-link');svg.setAttribute('aria-hidden','true');document.body.appendChild(svg);
+
+  // Writing: each slot's text appears one character at a time, in order.
+  var queue=[],cur=null,timer=null;
+  function blank(f){f.classList.remove('filled');f.querySelectorAll('.hand').forEach(function(h){h.textContent='';});}
+  function start(f){f.classList.add('filled');f.querySelectorAll('.hand').forEach(function(h){h.innerHTML='<span class="w"></span><span class="r"></span>';h.lastChild.textContent=h.dataset.t;});}
+  function finish(f){f.querySelectorAll('.hand').forEach(function(h){h.textContent=h.dataset.t;});}
+  function step(){
+    if(!cur){cur=queue.shift();if(!cur){clearInterval(timer);timer=null;return;}start(cur);}
+    var r=[].slice.call(cur.querySelectorAll('.hand .r')).filter(function(x){return x.textContent;})[0];
+    if(!r){finish(cur);cur=null;return;}
+    r.previousSibling.textContent+=r.textContent[0];r.textContent=r.textContent.slice(1);
+  }
+  function write(list){
+    if(cur){finish(cur);cur=null;}
+    queue.forEach(function(f){start(f);finish(f);});queue=[];
+    list.forEach(function(f){if(still){start(f);finish(f);}else queue.push(f);});
+    if(queue.length&&!timer)timer=setInterval(step,22);
+  }
+
   var triggers=[].slice.call(document.querySelectorAll('[data-card]'));
   var startEl=document.getElementById('cardstart'),endEl=document.querySelector('[data-card-end]');
-  var closed=false,lastAct=null,force=false;
-  panel.querySelector('.cp-close').addEventListener('click',function(){closed=true;panel.classList.add('gone');document.documentElement.classList.remove('card-open');});
-  function keys(el){return el.dataset.card.split(' ').filter(Boolean);}
-  // Where a trigger sits in the manual, e.g. "3.1, step 2".
   var h3s=[].slice.call(document.querySelectorAll('.page h3'));
+  var closed=false,act=null,shown={},side=false,force=false;
+  panel.querySelector('.cp-close').addEventListener('click',function(){closed=true;panel.classList.add('gone');document.documentElement.classList.remove('card-open');svg.innerHTML='';});
+  function keys(el){return el.dataset.card.split(' ').filter(Boolean);}
   function where(t){
     var h=null;h3s.forEach(function(x){if(x.compareDocumentPosition(t)&Node.DOCUMENT_POSITION_FOLLOWING)h=x;});
     var sec=h?h.textContent.split(' ')[0]:'';
@@ -532,37 +559,61 @@ const REFS = {"newport": {"c": "Newport, C. (2016). <i>Deep work: Rules for focu
     if(li&&li.parentElement.tagName==='OL')return sec+', step '+([].indexOf.call(li.parentElement.children,li)+1);
     return sec;
   }
-  function hits(t,line){var rs=t.getClientRects();for(var i=0;i<rs.length;i++){if(rs[i].top-6<=line&&rs[i].bottom+6>=line)return true;}return false;}
+  function firstTop(t){var rs=t.getClientRects();return rs.length?rs[0].top:null;}
   function layout(){
     var pw=page.offsetWidth,gap=24,need=24*parseFloat(getComputedStyle(document.documentElement).fontSize);
-    var side=window.innerWidth>=pw+need+gap+48;
+    side=window.innerWidth>=pw+need+gap+48;
     panel.classList.toggle('side',side);panel.classList.toggle('sheet',!side);
-    var gutter=(window.innerWidth-pw)/2;
-    document.documentElement.style.setProperty('--shift',side?Math.max(0,need+gap+16-gutter)+'px':'0px');
-    return side;
+    document.documentElement.style.setProperty('--shift',side?Math.max(0,need+gap+16-(window.innerWidth-pw)/2)+'px':'0px');
   }
-  var side=layout();
+  layout();
   function update(){
-    var line=window.innerHeight*0.45,act=null;
+    var line=window.innerHeight*0.45,next=null,want={};
     var inRange=startEl.getBoundingClientRect().top<=line&&endEl.getBoundingClientRect().top>line;
-    if(inRange)triggers.forEach(function(t){if(hits(t,line))act=t;});
-    var on=act?keys(act):[];
-    var show=inRange&&!closed&&(side||on.length>0);
+    // The active instruction is the last one whose start has reached the reading line, so the
+    // highlight holds steady through the gaps between instructions.
+    if(inRange){want._date=1;triggers.forEach(function(t){var y=firstTop(t);if(y!==null&&y<=line){next=t;keys(t).forEach(function(k){want[k]=1;});}});}
+    var show=inRange&&!closed&&(side||!!next);
     panel.classList.toggle('show',show);
     document.documentElement.classList.toggle('card-open',show&&side);
-    if(act===lastAct&&!force)return;
+    var fresh=[];
+    Object.keys(fields).forEach(function(k){
+      if(want[k]&&!shown[k])fresh.push(fields[k]);
+      if(!want[k]&&shown[k]){if(cur===fields[k])cur=null;queue=queue.filter(function(f){return f!==fields[k];});blank(fields[k]);}
+    });
+    shown=want;
+    if(fresh.length)write(fresh);
+    if(next===act&&!force)return;
     force=false;
-    if(lastAct)lastAct.classList.remove('card-on');
-    lastAct=act;
-    if(act&&on.length)act.classList.add('card-on');
+    if(act)act.classList.remove('card-on');
+    act=next;
+    var on=act?keys(act):[];
+    if(act)act.classList.add('card-on');
     Object.keys(fields).forEach(function(k){fields[k].classList.toggle('on',on.indexOf(k)>=0);});
     now.textContent=on.length?'You’re reading '+where(act)+'. On the card: '+on.map(function(k){return '“'+labels[k]+'”';}).join(' and '):'';
-    if(on.length){var f=fields[on[0]],top=f.getBoundingClientRect().top-panel.getBoundingClientRect().top+panel.scrollTop;if(top<panel.scrollTop+90||top+f.offsetHeight>panel.scrollTop+panel.clientHeight)panel.scrollTop=top-110;}
+    if(on.length){var f=fields[on[0]],pr=panel.getBoundingClientRect(),fr=f.getBoundingClientRect();
+      if(fr.top<pr.top+80||fr.bottom>pr.bottom-20)panel.scrollTo({top:fr.top-pr.top+panel.scrollTop-pr.height/3,behavior:still?'auto':'smooth'});}
   }
+  // Line from the highlighted words to the slot, redrawn every frame while it shows.
+  function draw(){
+    requestAnimationFrame(draw);
+    if(!act||!side||!panel.classList.contains('show')||!keys(act).length){if(svg.firstChild)svg.innerHTML='';return;}
+    var vh=window.innerHeight,rs=[].slice.call(act.getClientRects()).filter(function(r){return r.bottom>0&&r.top<vh;});
+    if(!rs.length){svg.innerHTML='';return;}
+    var top=Math.max(4,Math.min.apply(null,rs.map(function(r){return r.top;}))-3),bot=Math.min(vh-4,Math.max.apply(null,rs.map(function(r){return r.bottom;}))+3);
+    var pr=page.getBoundingClientRect(),x=pr.right-parseFloat(getComputedStyle(page).paddingRight)+14,mid=(top+bot)/2;
+    var cr=panel.getBoundingClientRect(),d='M'+(x-5)+' '+top+'H'+x+'V'+bot+'H'+(x-5),dots='';
+    keys(act).forEach(function(k){var fr=fields[k].getBoundingClientRect();
+      var ty=Math.max(cr.top+10,Math.min(cr.bottom-10,fr.top+Math.min(fr.height/2,14))),tx=fr.left-4;
+      d+='M'+x+' '+mid+'C'+(x+(tx-x)*.5)+' '+mid+' '+(tx-(tx-x)*.5)+' '+ty+' '+tx+' '+ty;
+      dots+='<circle cx="'+tx+'" cy="'+ty+'" r="3.5"/>';});
+    svg.innerHTML='<path d="'+d+'"/>'+dots;
+  }
+  requestAnimationFrame(draw);
   var queued=false;
   function onScroll(){if(!queued){queued=true;requestAnimationFrame(function(){queued=false;update();});}}
   window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',function(){side=layout();force=true;onScroll();});
+  window.addEventListener('resize',function(){layout();force=true;onScroll();});
   document.addEventListener('toggle',function(){force=true;onScroll();},true);
   update();
 })();
